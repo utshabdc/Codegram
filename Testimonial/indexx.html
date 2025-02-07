@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .custom-testi {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .testimonial-card {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        max-width: 600px;
+      }
+
+      .testimonial-image img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ddd;
+        margin-right: 20px;
+      }
+
+      .testimonial-content {
+        flex: 1;
+      }
+
+      .testimonial-content h2 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+
+      .stars {
+        font-size: 1.2em;
+        color: gold;
+      }
+
+      .testimonial-content p {
+        font-size: 0.9em;
+        color: #333;
+        margin: 5px 0;
+      }
+
+      .author {
+        font-size: 0.8em;
+        color: rgba(128, 128, 128, 0.61);
+      }
+      @media (max-width: 768px) {
+        .custom-testi {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="custom-testi">
+      <!-- card one  -->
+      <div class="testimonial-card">
+        <div class="testimonial-image">
+          <img src="./assets/ava.png" alt="Marcin Bal" />
+        </div>
+        <div class="testimonial-content">
+          <h2>Transmission</h2>
+          <div class="stars">★★★★★</div>
+          <p>
+            “FlyFreely’s biggest drawcard is the offline field app, and
+            automatic sync when connectivity is restored.
+          </p>
+          <p>
+            That’s a huge win for us as a lot of our flights take place in rural
+            areas with no phone or internet service”
+          </p>
+          <p class="author">
+            - Marcin Bal, Chief Remote Pilot <br />
+            South Australian Power Networks
+          </p>
+        </div>
+      </div>
+      <!-- card one  -->
+      <div class="testimonial-card">
+        <div class="testimonial-image">
+          <img src="./assets/ava.png" alt="Marcin Bal" />
+        </div>
+        <div class="testimonial-content">
+          <h2>Transmission</h2>
+          <div class="stars">★★★★★</div>
+          <p>
+            “FlyFreely’s biggest drawcard is the offline field app, and
+            automatic sync when connectivity is restored.
+          </p>
+          <p>
+            That’s a huge win for us as a lot of our flights take place in rural
+            areas with no phone or internet service”
+          </p>
+          <p class="author">
+            - Marcin Bal, Chief Remote Pilot <br />
+            South Australian Power Networks
+          </p>
+        </div>
+      </div>
+      <!-- card one  -->
+      <div class="testimonial-card">
+        <div class="testimonial-image">
+          <img src="./assets/ava.png" alt="Marcin Bal" />
+        </div>
+        <div class="testimonial-content">
+          <h2>Transmission</h2>
+          <div class="stars">★★★★★</div>
+          <p>
+            “FlyFreely’s biggest drawcard is the offline field app, and
+            automatic sync when connectivity is restored.
+          </p>
+          <p>
+            That’s a huge win for us as a lot of our flights take place in rural
+            areas with no phone or internet service”
+          </p>
+          <p class="author">
+            - Marcin Bal, Chief Remote Pilot <br />
+            South Australian Power Networks
+          </p>
+        </div>
+      </div>
+      <!-- card one  -->
+      <div class="testimonial-card">
+        <div class="testimonial-image">
+          <img src="./assets/ava.png" alt="Marcin Bal" />
+        </div>
+        <div class="testimonial-content">
+          <h2>Transmission</h2>
+          <div class="stars">★★★★★</div>
+          <p>
+            “FlyFreely’s biggest drawcard is the offline field app, and
+            automatic sync when connectivity is restored.
+          </p>
+          <p>
+            That’s a huge win for us as a lot of our flights take place in rural
+            areas with no phone or internet service”
+          </p>
+          <p class="author">
+            - Marcin Bal, Chief Remote Pilot <br />
+            South Australian Power Networks
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

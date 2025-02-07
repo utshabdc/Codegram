@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonial Slider</title>
+    <style>
+      .testi-section {
+        padding: 80px 20px;
+        overflow: hidden;
+      }
+
+      .testi-container {
+        max-width: 1420px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .testi-slider {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .testi-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .testi-slide {
+        flex: 0 0 calc(33.333% - 20px);
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        margin-right: 30px;
+      }
+
+      .testi-content {
+        text-align: center;
+      }
+
+      .testi-stars {
+        color: #000;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .testi-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .testi-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        overflow: hidden;
+      }
+
+      .testi-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .testi-quote {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .testi-author {
+        font-style: italic;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .testi-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+      }
+
+      .testi-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .testi-dot.active {
+        background: #000;
+      }
+
+      .testi-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      .testi-arrow-left {
+        left: -20px;
+      }
+
+      .testi-arrow-right {
+        right: -20px;
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 991px) {
+        .testi-slide {
+          flex: 0 0 100%;
+          margin-right: 0;
+        }
+
+        .testi-arrow {
+          display: none;
+        }
+      }
+
+      /* Tablet Styles */
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .testi-slide {
+          flex: 0 0 calc(50% - 15px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="testi-section">
+      <div class="testi-container">
+        <div class="testi-slider">
+          <div class="testi-track">
+            <!-- Slide 1 -->
+            <div class="testi-slide">
+              <div class="testi-content">
+                <div class="testi-stars">★★★★★</div>
+                <h2 class="testi-title">Transmission</h2>
+                <div class="testi-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b7Bm7vS1FtmoRnhPyYeoENgHgFaKaT.png"
+                    alt="Testimonial"
+                  />
+                </div>
+                <p class="testi-quote">
+                  "FlyFreely's biggest drawcard is the offline field app, and
+                  automatic sync when connectivity is restored. That's a huge
+                  win for us as a lot of our flights take place in rural areas
+                  with no phone or internet service"
+                </p>
+                <p class="testi-author">
+                  - Marcin Bal, Chief Remote Pilot<br />South Australian Power
+                  Networks
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testi-slide">
+              <div class="testi-content">
+                <div class="testi-stars">★★★★★</div>
+                <h2 class="testi-title">Distribution</h2>
+                <div class="testi-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b7Bm7vS1FtmoRnhPyYeoENgHgFaKaT.png"
+                    alt="Testimonial"
+                  />
+                </div>
+                <p class="testi-quote">
+                  "FlyFreely's biggest drawcard is the offline field app, and
+                  automatic sync when connectivity is restored. That's a huge
+                  win for us as a lot of our flights take place in rural areas
+                  with no phone or internet service"
+                </p>
+                <p class="testi-author">
+                  - Marcin Bal, Chief Remote Pilot<br />South Australian Power
+                  Networks
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testi-slide">
+              <div class="testi-content">
+                <div class="testi-stars">★★★★★</div>
+                <h2 class="testi-title">Contractor</h2>
+                <div class="testi-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b7Bm7vS1FtmoRnhPyYeoENgHgFaKaT.png"
+                    alt="Testimonial"
+                  />
+                </div>
+                <p class="testi-quote">
+                  "What was once a convoluted process is now straight-forward
+                  because everyone knows what they need to do. We can do
+                  multiple different operations at once at a much higher
+                  standard. It's unreal!"
+                </p>
+                <p class="testi-author">
+                  - Josh Williams, Director of Aviation,<br />Infravision
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="testi-slide">
+              <div class="testi-content">
+                <div class="testi-stars">★★★★★</div>
+                <h2 class="testi-title">Energy</h2>
+                <div class="testi-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b7Bm7vS1FtmoRnhPyYeoENgHgFaKaT.png"
+                    alt="Testimonial"
+                  />
+                </div>
+                <p class="testi-quote">
+                  "The FlyFreely platform has revolutionized our drone
+                  operations. It's intuitive, comprehensive, and has
+                  significantly improved our efficiency."
+                </p>
+                <p class="testi-author">
+                  - Sarah Johnson, Drone Program Manager<br />EnergyTech
+                  Solutions
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="testi-slide">
+              <div class="testi-content">
+                <div class="testi-stars">★★★★★</div>
+                <h2 class="testi-title">Agriculture</h2>
+                <div class="testi-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b7Bm7vS1FtmoRnhPyYeoENgHgFaKaT.png"
+                    alt="Testimonial"
+                  />
+                </div>
+                <p class="testi-quote">
+                  "FlyFreely has transformed how we manage our agricultural
+                  surveys. The offline capabilities and easy synchronization are
+                  game-changers for our rural operations."
+                </p>
+                <p class="testi-author">
+                  - Michael Thompson, Head of Drone Operations<br />AgriDrone
+                  Innovations
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-nav"></div>
+          <div class="testi-arrow testi-arrow-left">&#10094;</div>
+          <div class="testi-arrow testi-arrow-right">&#10095;</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const track = document.querySelector(".testi-track");
+      const slides = document.querySelectorAll(".testi-slide");
+      const nav = document.querySelector(".testi-nav");
+      const leftArrow = document.querySelector(".testi-arrow-left");
+      const rightArrow = document.querySelector(".testi-arrow-right");
+      let currentSlide = 0;
+      let slidesPerView = 3;
+
+      function updateSlidesPerView() {
+        if (window.innerWidth <= 991) {
+          slidesPerView = 1;
+        } else if (window.innerWidth <= 1199) {
+          slidesPerView = 2;
+        } else {
+          slidesPerView = 3;
+        }
+      }
+
+      function updateSliderView() {
+        updateSlidesPerView();
+        const slideWidth = 100 / slidesPerView;
+        slides.forEach((slide) => {
+          slide.style.flex = `0 0 ${slideWidth}%`;
+        });
+        goToSlide(currentSlide);
+      }
+
+      function createDots() {
+        nav.innerHTML = "";
+        const totalDots = Math.ceil(slides.length / slidesPerView);
+        for (let i = 0; i < totalDots; i++) {
+          const dot = document.createElement("div");
+          dot.classList.add("testi-dot");
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => goToSlide(i * slidesPerView));
+          nav.appendChild(dot);
+        }
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        const slideWidth = 100 / slidesPerView;
+        track.style.transform = `translateX(-${index * slideWidth}%)`;
+        updateDots();
+        updateArrows();
+      }
+
+      function updateDots() {
+        const dots = document.querySelectorAll(".testi-dot");
+        dots.forEach((dot, index) => {
+          dot.classList.toggle(
+            "active",
+            Math.floor(currentSlide / slidesPerView) === index
+          );
+        });
+      }
+
+      function updateArrows() {
+        leftArrow.style.display = currentSlide === 0 ? "none" : "flex";
+        rightArrow.style.display =
+          currentSlide >= slides.length - slidesPerView ? "none" : "flex";
+      }
+
+      leftArrow.addEventListener("click", () => {
+        if (currentSlide > 0) {
+          goToSlide(currentSlide - slidesPerView);
+        }
+      });
+
+      rightArrow.addEventListener("click", () => {
+        if (currentSlide < slides.length - slidesPerView) {
+          goToSlide(currentSlide + slidesPerView);
+        }
+      });
+
+      // Auto-advance slides every 5 seconds on mobile only
+      function startAutoSlide() {
+        if (window.innerWidth <= 991) {
+          return setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            goToSlide(currentSlide);
+          }, 5000);
+        }
+      }
+
+      let autoSlideInterval = startAutoSlide();
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        clearInterval(autoSlideInterval);
+        updateSliderView();
+        createDots();
+        if (window.innerWidth <= 991) {
+          autoSlideInterval = startAutoSlide();
+        }
+      });
+
+      // Initialize slider
+      updateSliderView();
+      createDots();
+    </script>
+  </body>
+</html>

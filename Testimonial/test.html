@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Testimonial Carousel</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      .custom-testi-container {
+        max-width: 1420px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .custom-testi {
+        display: flex;
+        transition: transform 0.3s ease;
+      }
+
+      .testimonial-card {
+        flex: 0 0 calc(33.333% - 20px);
+        display: flex;
+        align-items: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+      }
+
+      .testimonial-image img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ddd;
+        margin-right: 20px;
+      }
+
+      .testimonial-content {
+        flex: 1;
+      }
+
+      .testimonial-content h2 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+      }
+
+      .stars {
+        font-size: 1.2em;
+        color: gold;
+        margin-bottom: 10px;
+      }
+
+      .testimonial-content p {
+        font-size: 0.9em;
+        color: #333;
+        margin: 5px 0;
+      }
+
+      .author {
+        font-size: 0.8em;
+        color: rgba(128, 128, 128, 0.61);
+        margin-top: 10px;
+      }
+
+      .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .carousel-arrow:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .carousel-arrow.left {
+        left: 10px;
+      }
+
+      .carousel-arrow.right {
+        right: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .custom-testi {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+        }
+
+        .testimonial-card {
+          flex: 0 0 100%;
+          scroll-snap-align: start;
+        }
+
+        .carousel-arrow {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-testi-container">
+      <section class="custom-testi" id="testimonialCarousel">
+        <!-- Card 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="./assets/ava.png" alt="Robert Johnson" />
+          </div>
+          <div class="testimonial-content">
+            <h2>Transmission</h2>
+            <div class="stars">★★★★★</div>
+            <p>
+              "FlyFreely's biggest drawcard is the offline field app, and
+              automatic sync when connectivity is restored.
+            </p>
+            <p>
+              That's a huge win for us as a lot of our flights take place in
+              rural areas with no phone or internet service"
+            </p>
+            <p class="author">
+              - Marcin Bal, Chief Remote Pilot <br />
+              South Australian Power Networks
+            </p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="./assets/ava.png" alt="Robert Johnson" />
+          </div>
+          <div class="testimonial-content">
+            <h2>Distribution</h2>
+            <div class="stars">★★★★★</div>
+            <p>
+              "The FlyFreely platform has revolutionized our drone operations.
+              It's intuitive, comprehensive, and has significantly improved our
+              efficiency.
+            </p>
+            <p>We can now manage our entire fleet with ease and confidence."</p>
+            <p class="author">
+              - John Doe, Drone Program Manager <br />
+              Global Distribution Solutions
+            </p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="./assets/ava.png" alt="Robert Johnson" />
+          </div>
+          <div class="testimonial-content">
+            <h2>Contractor</h2>
+            <div class="stars">★★★★★</div>
+            <p>
+              "As a contractor, FlyFreely has been a game-changer for my
+              business. The platform streamlines compliance and planning
+              processes, allowing me to focus on what I do best - flying drones.
+            </p>
+            <p>It's an essential tool for any serious drone operator."</p>
+            <p class="author">
+              - Jane Smith, Independent Drone Contractor <br />
+              Aerial Innovations LLC
+            </p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="./assets/ava.png" alt="Robert Johnson" />
+          </div>
+          <div class="testimonial-content">
+            <h2>Energy Sector</h2>
+            <div class="stars">★★★★★</div>
+            <p>
+              "In the energy sector, safety and compliance are paramount.
+              FlyFreely not only ensures we meet all regulatory requirements but
+              also enhances our operational efficiency.
+            </p>
+            <p>It's become an indispensable part of our drone program."</p>
+            <p class="author">
+              - Robert Johnson, Head of Drone Operations <br />
+              EnergyTech Solutions
+            </p>
+          </div>
+        </div>
+      </section>
+      <button class="carousel-arrow left" id="prevBtn">&lt;</button>
+      <button class="carousel-arrow right" id="nextBtn">&gt;</button>
+    </div>
+
+    <script>
+      const carousel = document.getElementById("testimonialCarousel");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const cards = carousel.querySelectorAll(".testimonial-card");
+      let currentIndex = 0;
+
+      function updateCarousel() {
+        const cardWidth = cards[0].offsetWidth;
+        carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      }
+
+      function showArrows() {
+        const isMobile = window.innerWidth <= 768;
+        const hasMoreThanThree = cards.length > 3;
+        prevBtn.style.display =
+          !isMobile && hasMoreThanThree ? "block" : "none";
+        nextBtn.style.display =
+          !isMobile && hasMoreThanThree ? "block" : "none";
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (currentIndex < cards.length - 3) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        showArrows();
+        updateCarousel();
+      });
+
+      // Touch events for mobile swipe
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      carousel.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        false
+      );
+
+      carousel.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        },
+        false
+      );
+
+      function handleSwipe() {
+        if (touchStartX - touchEndX > 50 && currentIndex < cards.length - 1) {
+          currentIndex++;
+          updateCarousel();
+        }
+        if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      }
+
+      // Initialize
+      showArrows();
+    </script>
+  </body>
+</html>
