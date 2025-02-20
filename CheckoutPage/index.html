@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Modal with Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Button to open modal -->
+    <button
+      onclick="openModal()"
+      class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+    >
+      View PDF
+    </button>
+
+    <!-- PDF Modal (Hidden by default) -->
+    <div
+      id="pdfModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+    >
+      <div
+        class="bg-white w-11/12 md:w-3/4 lg:w-1/2 p-4 rounded-lg shadow-lg relative"
+      >
+        <!-- Close Button -->
+        <button
+          onclick="closeModal()"
+          class="absolute top-3 right-4 text-gray-600 text-xl"
+        >
+          &times;
+        </button>
+
+        <h2 class="text-xl font-semibold mb-2 text-center">PDF Preview</h2>
+
+        <!-- PDF Viewer -->
+        <iframe id="pdfViewer" class="w-full h-[500px] border"></iframe>
+      </div>
+    </div>
+
+    <script>
+      function openModal() {
+        const pdfUrl = "assets/inigde.pdf"; // Your PDF file path
+        const pdfViewer = document.getElementById("pdfViewer");
+
+        // Fix: Check if direct PDF loading works, else use Google Docs Viewer
+        const isGoogleDocs = true; // Change to false if your server allows inline PDF display
+        pdfViewer.src = isGoogleDocs
+          ? `https://docs.google.com/gview?url=${window.location.origin}/${pdfUrl}&embedded=true`
+          : pdfUrl;
+
+        document.getElementById("pdfModal").classList.remove("hidden");
+      }
+
+      function closeModal() {
+        document.getElementById("pdfModal").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>

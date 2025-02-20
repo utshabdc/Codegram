@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Modal with Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="">
+    <!-- Button to Open Modal -->
+    <button
+      onclick="openModal()"
+      class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+    >
+      View PDF
+    </button>
+
+    <!-- PDF Modal -->
+    <div
+      id="pdfModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+    >
+      <div
+        class="bg-white w-11/12 md:w-3/4 lg:w-1/2 max-sm:h-[70%] md:h-[70%] p-4 rounded-lg shadow-lg relative flex flex-col"
+      >
+        <!-- Close Button -->
+        <button
+          onclick="closeModal()"
+          class="absolute top-3 right-4 text-gray-600 text-xl"
+        >
+          &times;
+        </button>
+
+        <h2 class="text-xl font-semibold mb-2 text-center">PDF Preview</h2>
+
+        <!-- PDF Viewer -->
+        <iframe id="pdfViewer" class="w-full flex-1 border rounded-md"></iframe>
+      </div>
+    </div>
+
+    <script>
+      function openModal() {
+        // Google Drive Embed URL (Replace with your file ID)
+        const pdfUrl =
+          "https://drive.google.com/file/d/13TTIdpVT-_XUoEah8YC-QTp8KxSuNiry/preview";
+        document.getElementById("pdfViewer").src = pdfUrl;
+        document.getElementById("pdfModal").classList.remove("hidden");
+      }
+
+      function closeModal() {
+        document.getElementById("pdfModal").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>
