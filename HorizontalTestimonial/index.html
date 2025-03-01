@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Fontawesome CDN  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <style>
+    .testi-slider-wrapper .image-list {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 1.7rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-bottom: 20px;
+    }
+    .testi-container {
+      padding: 60px 0px;
+      max-width: 1220px;
+      width: 95%;
+      margin: auto;
+    }
+    .testi-slider-wrapper .image-list::-webkit-scrollbar {
+      display: none;
+    }
+    .testi-container .testi-slider-scrollbar {
+      height: 24px;
+      width: 80%;
+      display: flex;
+      align-items: center;
+    }
+    .testi-slider-scrollbar .testi-scrollbar-track {
+      height: 2px;
+      width: 100%;
+      background: #ccc;
+      position: relative;
+      border-radius: 4px;
+    }
+    .testi-slider-scrollbar:hover .testi-scrollbar-track {
+      height: 4px;
+    }
+    .testi-container .testi-scrollbar-thumb {
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      background: #000;
+      border-radius: inherit;
+      cursor: grab;
+    }
+    .testi-slider-scrollbar .testi-scrollbar-thumb:active {
+      height: 8px;
+      top: -2px;
+      cursor: grabbing;
+    }
+    .testi-container .testi-scrollbar-thumb::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      bottom: -10px;
+    }
+    .testi-slider-wrapper {
+      position: relative;
+    }
+    .testi-slide-button {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      border: 1px solid gray;
+      border-radius: 50%;
+      cursor: pointer;
+      outline: none;
+    }
+    .testi-slide-button#next-slide {
+      bottom: -70px;
+      right: 50px;
+      transform: translateY(-12%);
+    }
+    .testi-slide-button#prev-slide {
+      right: 110px;
+      transform: translateY(-12%);
+    }
+
+    /* Only card style  */
+    .testi-card {
+      width: 300px;
+      background-color: #f3f3f3;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .card-content {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .text-content {
+      flex: 1;
+    }
+
+    .username {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .testimonial {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.5;
+    }
+  </style>
+  <body>
+    <div>
+      <div class="testi-container">
+        <div class="testi-slider-wrapper">
+          <button id="next-slide" class="testi-slide-button">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <div class="image-list">
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+            <!-- card -01 -->
+            <div class="testi-card">
+              <div class="card-content">
+                <img
+                  src="image-testimonial-dr-massing-hya.png"
+                  alt="Profile"
+                  class="profile-img"
+                />
+                <div class="text-content">
+                  <p class="username">@jennifer_giella</p>
+                  <p class="testimonial">
+                    das Hyalove Hyaluronserm, was ich euch wirklich von Herzen
+                    empfehlen kann. 😍❤️ Das Serum zieht nach dem Auftragen
+                    super schnell ein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- card -01 -->
+          </div>
+          <button id="prev-slide" class="testi-slide-button">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+        <div class="testi-slider-scrollbar">
+          <div class="testi-scrollbar-track">
+            <div class="testi-scrollbar-thumb"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Custom Js File  -->
+    <script>
+      const initSlider = () => {
+        const slideButtons = document.querySelectorAll(
+          ".testi-slider-wrapper .testi-slide-button"
+        );
+        const sliderScrollBar = document.querySelector(
+          ".testi-container .testi-slider-scrollbar"
+        );
+        const scrollbarThumb = sliderScrollBar.querySelector(
+          ".testi-scrollbar-thumb"
+        );
+        const cardList = document.querySelector(
+          ".testi-slider-wrapper .image-list"
+        );
+        const maxScrollLeft = cardList.scrollWidth - cardList.clientWidth;
+        slideButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const direction = button.id === "prev-slide" ? -1 : 1;
+            const scrollAmount = cardList.clientWidth * direction;
+            cardList.scrollBy({
+              left: scrollAmount,
+              behavior: "smooth",
+            });
+          });
+        });
+        // const handleSlideButtons = () => {
+        //   slideButtons[0].style.display =
+        //     cardList.scrollLeft <= 0 ? "none" : "block";
+        //   slideButtons[1].style.display =
+        //     cardList.scrollLeft >= maxScrollLeft ? "none" : "block";
+        // };
+        const updateScrollThumbPosition = () => {
+          const scrollPosition = cardList.scrollLeft;
+          const thumbPositaion =
+            (scrollPosition / maxScrollLeft) *
+            (sliderScrollBar.clientWidth - scrollbarThumb.offsetWidth);
+          scrollbarThumb.style.left = `${thumbPositaion}px`;
+        };
+        cardList.addEventListener("scroll", () => {
+          // handleSlideButtons();
+          updateScrollThumbPosition();
+        });
+      };
+
+      window.addEventListener("load", initSlider);
+    </script>
+  </body>
+</html>
