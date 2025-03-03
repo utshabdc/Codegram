@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Managed IT Support Services</title>
+    <style>
+      .custom-manage-body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        width: 100%;
+        position: relative;
+      }
+
+      .manage-custom-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden; /* This helps prevent content overflow */
+        padding: 60px 20px;
+        color: white;
+        z-index: 1;
+      }
+
+      .manage-custom-background {
+        padding-bottom: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
+
+      .manage-custom-background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This ensures the image covers the area properly */
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      /* Positioned elements to create the visual effect */
+      .manage-custom-bg-item-1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        background-color: rgba(190, 30, 30, 0.7);
+        transform: skewX(-20deg) translateX(-10%);
+        z-index: -1;
+      }
+
+      .manage-custom-bg-item-2 {
+        position: absolute;
+        bottom: -10%;
+        right: 5%;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: rgba(190, 30, 30, 0.5);
+        z-index: -1;
+      }
+
+      .manage-custom-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+      }
+
+      .manage-custom-title {
+        font-size: 42px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .manage-custom-content-box {
+        background-color: #07354e; /* Changed to match the image */
+        padding: 25px;
+        max-width: 800px;
+        margin: 0 auto 30px;
+      }
+
+      .manage-custom-description {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .manage-custom-button {
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: transparent;
+        color: white;
+        text-decoration: none;
+        border: 2px solid white;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .manage-custom-button:hover {
+        background-color: white;
+        color: #d62828;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .manage-custom-background img {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .manage-custom-title {
+          font-size: 32px;
+        }
+
+        .manage-custom-content-box {
+          padding: 20px 15px;
+          width: 90%; /* Ensure it doesn't overflow on mobile */
+        }
+
+        .manage-custom-description {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .manage-custom-title {
+          font-size: 28px;
+        }
+
+        .manage-custom-section {
+          padding: 40px 15px;
+        }
+
+        .manage-custom-content-box {
+          padding: 15px 10px;
+          width: 100%; /* Full width on smaller screens */
+        }
+      }
+    </style>
+  </head>
+  <body class="custom-manage-body">
+    <section class="manage-custom-section">
+      <!-- Background elements positioned absolutely -->
+      <div class="manage-custom-background">
+        <img src="helloo.png" alt="" />
+      </div>
+
+      <div class="manage-custom-container">
+        <h1 class="manage-custom-title">Managed IT Support Services</h1>
+
+        <div class="manage-custom-content-box">
+          <p class="manage-custom-description">
+            ALCON DTS helps businesses improve operations by either augmenting
+            their IT department or fully becoming their outsourced IT
+            department. Our Managed IT Services Provider (MSP) offering is used
+            across the world by companies big and small. This includes onsite IT
+            support, remote IT help desk, infrastructure and network
+            maintenance/troubleshooting and so much more. Not only will ALCON
+            DTS likely cut expenses but businesses that utilize our services
+            will gain an IT partner that will guide them along the business
+            technology journey.
+          </p>
+        </div>
+
+        <a href="#" class="manage-custom-button">Learn More</a>
+      </div>
+    </section>
+  </body>
+</html>

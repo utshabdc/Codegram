@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Services Features</title>
+    <style>
+      .manage-custom-feature-section-body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .manage-custom-feature-section {
+        width: 100%;
+        padding: 80px 20px;
+        color: white;
+        background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g2xFajWYYmxTlKmkTA4UnD5IF1Wfnk.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+
+      .manage-custom-feature-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .manage-custom-feature-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        position: relative;
+      }
+
+      .manage-custom-feature-card {
+        flex: 1;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .manage-custom-feature-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .manage-custom-feature-price {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .manage-custom-feature-description {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        color: #ccc;
+      }
+
+      .manage-custom-feature-list {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 30px;
+      }
+
+      .manage-custom-feature-list li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .manage-custom-feature-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #fff;
+      }
+
+      .manage-custom-feature-button {
+        display: inline-block;
+        padding: 10px 25px;
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .manage-custom-feature-button:hover {
+        background-color: white;
+        color: black;
+      }
+
+      @media (max-width: 992px) {
+        .manage-custom-feature-container {
+          flex-direction: column;
+          max-width: 600px;
+        }
+
+        .manage-custom-feature-card {
+          padding: 30px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .manage-custom-feature-section {
+          padding: 40px 15px;
+        }
+
+        .manage-custom-feature-title {
+          font-size: 20px;
+        }
+
+        .manage-custom-feature-price {
+          font-size: 24px;
+        }
+
+        .manage-custom-feature-description {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body class="manage-custom-feature-section-body">
+    <section class="manage-custom-feature-section">
+      <div class="manage-custom-feature-container">
+        <!-- Remote IT Card -->
+        <div class="manage-custom-feature-card">
+          <h2 class="manage-custom-feature-title">REMOTE IT</h2>
+          <div class="manage-custom-feature-price">$100-$150/user</div>
+          <p class="manage-custom-feature-description">
+            The perfect starter package for locations that don't require regular
+            on-site support and are ready for professional IT Services.
+          </p>
+          <ul class="manage-custom-feature-list">
+            <li>Unlimited Remote Support</li>
+            <li>24/7 System Monitoring</li>
+            <li>Vendor Management</li>
+            <li>Monthly Service</li>
+            <li>Quarterly Business Reviews</li>
+          </ul>
+          <a href="#" class="manage-custom-feature-button">Read More</a>
+        </div>
+
+        <!-- Complete IT Card -->
+        <div class="manage-custom-feature-card">
+          <h2 class="manage-custom-feature-title">COMPLETE IT</h2>
+          <div class="manage-custom-feature-price">$150-$250/user</div>
+          <p class="manage-custom-feature-description">
+            For businesses, organizations and clinics in need of dependable and
+            comprehensive IT Support.
+          </p>
+          <ul class="manage-custom-feature-list">
+            <li>All Remote IT Plus..</li>
+            <li>Onsite Support</li>
+            <li>Cybersecurity Awareness Training</li>
+            <li>Business Continuity Planning</li>
+            <li>EndPoint Protection</li>
+          </ul>
+          <a href="#" class="manage-custom-feature-button">Read More</a>
+        </div>
+
+        <!-- Secure IT Card -->
+        <div class="manage-custom-feature-card">
+          <h2 class="manage-custom-feature-title">SECURE IT</h2>
+          <div class="manage-custom-feature-price">$250-$400/user</div>
+          <p class="manage-custom-feature-description">
+            For businesses needing enhanced security and larger organizations
+            that require regulatory compliance.
+          </p>
+          <ul class="manage-custom-feature-list">
+            <li>All Complete IT Plus..</li>
+            <li>vCISO Service</li>
+            <li>Business Continuity Solution</li>
+            <li>Email Phishing Security Testing</li>
+            <li>Cybersecurity Framework Guidance</li>
+          </ul>
+          <a href="#" class="manage-custom-feature-button">Read More</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
