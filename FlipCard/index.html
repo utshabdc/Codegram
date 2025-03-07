@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* From Uiverse.io by IWhat1 */
+      .custom-flip-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .custom-flip-card {
+        width: 100%;
+        height: 354px;
+        perspective: 900px;
+      }
+
+      .custom-flip-card-inner {
+        height: 100%;
+        width: 100%;
+        background-color: aliceblue;
+        position: relative;
+        transition: transform 1500ms;
+        transform-style: preserve-3d;
+        border-radius: 2rem;
+      }
+
+      .custom-flip-card:hover .custom-flip-card-inner {
+        cursor: pointer;
+        transform: rotateY(180deg) rotateZ(180deg);
+      }
+
+      .custom-flip-front,
+      .custom-flip-back {
+        height: 100%;
+        width: 100%;
+        border-radius: 2rem;
+        position: absolute;
+        box-shadow: 0 0 10px 2px rgba(50, 50, 50, 0.25);
+        backface-visibility: hidden;
+        color: aliceblue;
+        background: linear-gradient(-135deg, #022d48, #127dc9);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .custom-flip-back {
+        transform: rotateY(180deg) rotateZ(180deg);
+        padding: 15px;
+      }
+
+      .custom-flip-front-heading {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .member-team {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .custom-owner {
+        background-color: #127dc9;
+        padding: 10px 30px;
+        border-radius: 40px;
+        color: white;
+      }
+
+      /* Responsive Grid: 3 columns for desktop, 1 for mobile */
+      @media screen and (max-width: 768px) {
+        .custom-flip-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-flip-container">
+      <!-- Card 1 -->
+      <div class="custom-flip-card">
+        <div class="custom-flip-card-inner">
+          <div class="custom-flip-front">
+            <img src="andrew.png" alt="" class="member-team" />
+            <p class="custom-flip-front-heading">Andrew Simons</p>
+            <p class="custom-owner">Owner</p>
+          </div>
+          <div class="custom-flip-back">
+            <p>
+              I'm a tech-driven entrepreneur with over a decade of experience in
+              IT, Linux engineering, and cybersecurity. I co-founded a managed
+              services provider (MSP) focused on delivering innovative IT
+              solutions, from Zero Trust architecture to advanced cybersecurity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="custom-flip-card">
+        <div class="custom-flip-card-inner">
+          <div class="custom-flip-front">
+            <img src="andrew.png" alt="" class="member-team" />
+            <p class="custom-flip-front-heading">Burrell Allen</p>
+            <p class="custom-owner">Sales Director</p>
+          </div>
+          <div class="custom-flip-back">
+            <p>
+              With 20+ years in sales and leadership, I help businesses drive
+              growth, build high-performance teams, and develop strong
+              relationships in the tech industry.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="custom-flip-card">
+        <div class="custom-flip-card-inner">
+          <div class="custom-flip-front">
+            <img src="andrew.png" alt="" class="member-team" />
+            <p class="custom-flip-front-heading">David Kerbow</p>
+            <p class="custom-owner">IT Director</p>
+          </div>
+          <div class="custom-flip-back">
+            <p>
+              With 35+ years in IT, I specialize in infrastructure management,
+              data analysis, and process improvement to enhance business
+              operations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
