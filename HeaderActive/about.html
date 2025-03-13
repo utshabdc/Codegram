@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .menu_lists {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+      }
+      .menu_item {
+        cursor: pointer;
+      }
+      .menu_item a {
+        text-decoration: none;
+      }
+      .menu_item a.active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="menu_lists">
+        <li class="menu_item"><a href="home">Home</a></li>
+        <li class="menu_item"><a href="services">Services</a></li>
+        <li class="menu_item"><a href="about">About</a></li>
+        <li class="menu_item"><a href="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentURL = window.location.pathname;
+        document.querySelectorAll(".menu_item a").forEach((link) => {
+          if (link.getAttribute("href") === currentURL) {
+            link.parentElement.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
