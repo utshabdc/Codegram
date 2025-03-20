@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LED Solutions for Maximum Impact</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      /* Hero section */
+      .custom-hero {
+        position: relative;
+        height: 80vh;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Video background */
+      .custom-video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+
+      /* Overlay to darken video */
+      .custom-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      /* Content container */
+      .custom-content {
+        padding: 0 10%;
+        max-width: 1200px;
+        z-index: 1;
+      }
+
+      /* Headings */
+      .custom-main-heading {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .custom-sub-heading {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .custom-sub-heading .custom-static-text {
+        margin-right: 0.5rem;
+      }
+
+      .custom-sub-heading .custom-dynamic-text {
+        color: #ff6b35;
+        position: relative;
+      }
+
+      /* Typewriter cursor effect */
+      .custom-dynamic-text::after {
+        content: "";
+        position: absolute;
+        right: -5px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background-color: white;
+        animation: cursor-blink 0.8s infinite;
+      }
+
+      @keyframes cursor-blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* CTA Buttons */
+      .custom-cta-container {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .custom-cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .custom-primary-btn {
+        background-color: #ff6b35;
+        color: white;
+      }
+
+      .custom-primary-btn:hover {
+        background-color: #e85a2a;
+      }
+
+      .custom-secondary-btn {
+        background-color: transparent;
+        color: #4ecdc4;
+        border: 2px solid #4ecdc4;
+      }
+
+      .custom-secondary-btn:hover {
+        background-color: rgba(78, 205, 196, 0.1);
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .custom-main-heading {
+          font-size: 2.5rem;
+        }
+
+        .custom-sub-heading {
+          font-size: 1.5rem;
+        }
+
+        .custom-cta-btn {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .custom-main-heading {
+          font-size: 2rem;
+        }
+
+        .custom-sub-heading {
+          font-size: 1.2rem;
+        }
+
+        .custom-cta-container {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .custom-cta-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="custom-hero">
+      <!-- Video Background -->
+      <video class="custom-video-bg" autoplay muted loop>
+        <source src="assets/Untitled design_2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Overlay -->
+      <div class="custom-overlay"></div>
+
+      <!-- Content -->
+      <div class="custom-content">
+        <h1 class="custom-main-heading">LED Solutions for maximum impact</h1>
+        <h2 class="custom-sub-heading">
+          <span class="custom-static-text">LED Video walls for</span>
+          <span class="custom-dynamic-text" id="typewriter"></span>
+        </h2>
+
+        <div class="custom-cta-container">
+          <a href="#" class="custom-cta-btn custom-primary-btn"
+            >Free Consultation</a
+          >
+          <a href="#" class="custom-cta-btn custom-secondary-btn"
+            >Get a Free Quote</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Typewriter effect
+      const typewriterElement = document.getElementById("typewriter");
+      const venues = [
+        "BARS AND RESTAURANTS",
+        "CORPORATE EVENTS",
+        "CONCERT VENUES",
+        "RETAIL SPACES",
+        "TRADE SHOWS",
+      ];
+
+      let venueIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 100; // Base typing speed in ms
+
+      function typeWriter() {
+        const currentVenue = venues[venueIndex];
+
+        if (isDeleting) {
+          // Deleting text
+          typewriterElement.textContent = currentVenue.substring(
+            0,
+            charIndex - 1
+          );
+          charIndex--;
+          typingSpeed = 50; // Faster when deleting
+        } else {
+          // Typing text
+          typewriterElement.textContent = currentVenue.substring(
+            0,
+            charIndex + 1
+          );
+          charIndex++;
+          typingSpeed = 100; // Normal speed when typing
+        }
+
+        // If finished typing the word
+        if (!isDeleting && charIndex === currentVenue.length) {
+          // Pause at the end of the word
+          isDeleting = true;
+          typingSpeed = 1500; // Wait before starting to delete
+        }
+        // If finished deleting the word
+        else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          venueIndex = (venueIndex + 1) % venues.length; // Move to next venue
+          typingSpeed = 500; // Pause before typing next word
+        }
+
+        setTimeout(typeWriter, typingSpeed);
+      }
+
+      // Start the typewriter effect when the page loads
+      window.onload = typeWriter;
+    </script>
+  </body>
+</html>
