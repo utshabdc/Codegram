@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LED Display Applications</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      /* Main section container */
+      .cust-section {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+
+      .cust-section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333;
+      }
+
+      .cust-section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      /* Grid layout */
+      .cust-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+      }
+
+      /* Card styles */
+      .cust-card {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .cust-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .cust-card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cust-card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        text-align: center;
+        background-color: black;
+      }
+
+      .cust-card-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1100px) {
+        .cust-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .cust-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .cust-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cust-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cust-card {
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cust-section">
+      <div class="cust-section-title">
+        <h2>LED Display Applications</h2>
+      </div>
+
+      <div class="cust-grid">
+        <!-- Card 1 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            alt="LED Displays for Churches"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR<br />CHURCHES</h3>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            alt="LED Displays for Bars and Restaurants"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR BARS AND<br />RESTAURANTS</h3>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="LED Displays for Events"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR<br />EVENTS</h3>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1617096200347-cb04ae810b1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="LED Displays for Billboard Outdoor"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR BILLBOARD<br />OUTDOOR</h3>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="LED Displays for Airports"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR<br />AIRPORTS</h3>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="LED Displays for Luxury TV Home Cinema"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR LUXURY TV<br />HOME CINEMA</h3>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            alt="LED Displays for DJs"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR<br />DJ'S</h3>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="LED Displays for Podcasters"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR<br />PODCASTER'S</h3>
+          </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            alt="LED Displays for Virtual Production"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR VIRTUAL<br />PRODUCTION</h3>
+          </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="cust-card">
+          <img
+            src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="LED Displays for Shopping and Retail"
+            class="cust-card-image"
+          />
+          <div class="cust-card-overlay">
+            <h3 class="cust-card-title">FOR SHOPPING AND<br />RETAIL</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Optional JavaScript for additional interactivity
+      document.addEventListener("DOMContentLoaded", function () {
+        const custCards = document.querySelectorAll(".cust-card");
+
+        custCards.forEach((card) => {
+          // Add click event listener if needed
+          card.addEventListener("click", function () {
+            // You can add functionality here if needed
+            console.log(
+              "Card clicked:",
+              this.querySelector(".cust-card-title").textContent
+            );
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
