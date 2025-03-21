@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Container for content */
+      .content-container {
+        margin: 0 auto; /* Center the content */
+        padding: 0 20px; /* Optional padding for the sides */
+        max-width: 1500px; /* Max-width for the content */
+        width: 100%; /* Full width */
+      }
+
+      /* Navbar styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+        background-color: rgba(0, 0, 0, 0.4); /* Initially transparent black */
+      }
+
+      /* When scrolled, darken the navbar */
+      .navbar.scrolled {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.8
+        ); /* Darker transparent black when scrolled */
+      }
+
+      /* Wrapper div for navbar content */
+      .navbar-content {
+        max-width: 1500px; /* Max-width for navbar content */
+        width: 100%; /* Full width */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto; /* Center the content */
+      }
+
+      /* Logo styles */
+      .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-decoration: none;
+      }
+
+      /* Center logo/icon */
+      .center-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .center-logo svg {
+        width: 40px;
+        height: 40px;
+        fill: white;
+      }
+
+      /* Phone button */
+      .phone-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        text-decoration: none;
+        border: 1px solid white;
+        padding: 8px 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .phone-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .phone-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        a.phone-btn {
+          margin-right: 42px;
+        }
+        .logo-text {
+          display: block;
+          font-size: 1rem;
+        }
+
+        .center-logo {
+          display: none;
+        }
+
+        .phone-number {
+          display: none;
+        }
+
+        .navbar {
+          padding: 15px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Container for content -->
+    <div class="content-container">
+      <!-- Navigation Bar -->
+      <nav class="navbar" id="navbar">
+        <!-- Wrapper div for left logo, center logo, and phone button -->
+        <div class="navbar-content">
+          <!-- Left Logo -->
+          <a href="#" class="logo logo-text">BAY AREA TECHLED</a>
+
+          <!-- Center Logo/Icon -->
+          <div class="center-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path
+                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+              ></path>
+            </svg>
+          </div>
+
+          <!-- Phone Button -->
+          <a href="tel:8883637416" class="phone-btn">
+            <svg
+              class="phone-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
+            </svg>
+            <span class="phone-number">(888) 363 7416</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </body>
+  <script>
+    // JavaScript for scroll effect
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("navbar");
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled"); // Add the 'scrolled' class when scrolling
+      } else {
+        navbar.classList.remove("scrolled"); // Remove the 'scrolled' class when at the top
+      }
+    });
+  </script>
+</html>
