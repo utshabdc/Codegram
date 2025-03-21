@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team Process</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f4f9;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      /* Container styles */
+      .custom-sec-process-container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 40px 20px;
+      }
+
+      /* Heading styles */
+      .custom-sec-process-heading {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .custom-sec-process-heading h2 {
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .custom-sec-process-heading .highlight {
+        color: #fe63b5; /* Pink color as requested */
+      }
+
+      /* Timeline styles */
+      .custom-sec-timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Step styles */
+      .custom-sec-step {
+        display: flex;
+        margin-bottom: 50px;
+        position: relative;
+        align-items: flex-start;
+      }
+
+      .custom-sec-step:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Icon container */
+      .custom-sec-icon-container {
+        flex: 0 0 80px;
+        height: 80px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+      }
+
+      .custom-sec-icon {
+        width: 40px;
+        height: 40px;
+        fill: #fe63b5; /* Pink color for icons */
+      }
+
+      /* Content styles */
+      .custom-sec-step-content {
+        flex: 1;
+        padding-top: 10px;
+      }
+
+      .custom-sec-step-text {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* Arrow styles */
+      .custom-sec-arrow {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .custom-sec-arrow svg {
+        width: 30px;
+        height: 30px;
+        fill: #d1d9e6;
+      }
+
+      /* Button styles */
+      .custom-sec-cta-container {
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .custom-sec-cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #fe63b5;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .custom-sec-cta-button:hover {
+        background-color: #e44a9d;
+        transform: translateY(-2px);
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .custom-sec-process-heading h2 {
+          font-size: 28px;
+        }
+
+        .custom-sec-step {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .custom-sec-icon-container {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .custom-sec-step-text {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .custom-sec-process-heading h2 {
+          font-size: 24px;
+        }
+
+        .custom-sec-icon-container {
+          flex: 0 0 70px;
+          height: 70px;
+        }
+
+        .custom-sec-icon {
+          width: 35px;
+          height: 35px;
+        }
+
+        .custom-sec-step-text {
+          font-size: 15px;
+        }
+
+        .custom-sec-cta-button {
+          padding: 12px 25px;
+          font-size: 14px;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-sec-process-container">
+      <!-- Heading -->
+      <div class="custom-sec-process-heading">
+        <h2>
+          <span class="highlight">WE ARE A TEAM</span> THROUGHOUT YOUR PROJECT
+        </h2>
+      </div>
+
+      <!-- Timeline -->
+      <div class="custom-sec-timeline">
+        <!-- Step 1 -->
+        <div class="custom-sec-step">
+          <div class="custom-sec-icon-container">
+            <svg
+              class="custom-sec-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6zm2-5h8v2H8v-2zm0-4h8v2H8v-2z"
+              />
+            </svg>
+          </div>
+          <div class="custom-sec-step-content">
+            <p class="custom-sec-step-text">
+              Our dedicated consultants walk you through each phase of the
+              selection process, customizing LED display solutions that
+              perfectly align with your venue requirements and business goals.
+            </p>
+          </div>
+        </div>
+
+        <!-- Arrow 1 -->
+        <div class="custom-sec-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 17.414l-6.707-6.707 1.414-1.414L12 14.586l5.293-5.293 1.414 1.414z"
+            />
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="custom-sec-step">
+          <div class="custom-sec-icon-container">
+            <svg
+              class="custom-sec-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H5V8h14v11zM5 5v1h14V5H5zm5 7l4 4 6-6-1.41-1.41L13 14.17l-2.59-2.58L9 13z"
+              />
+            </svg>
+          </div>
+          <div class="custom-sec-step-content">
+            <p class="custom-sec-step-text">
+              Once your order is confirmed, our attentive customer care
+              specialists maintain regular communication regarding project
+              schedules, ensuring you enjoy a smooth and transparent experience
+              throughout.
+            </p>
+          </div>
+        </div>
+
+        <!-- Arrow 2 -->
+        <div class="custom-sec-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 17.414l-6.707-6.707 1.414-1.414L12 14.586l5.293-5.293 1.414 1.414z"
+            />
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="custom-sec-step">
+          <div class="custom-sec-icon-container">
+            <svg
+              class="custom-sec-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21.71 20.29l-1.42 1.42a1 1 0 0 1-1.41 0L12 14.83l-6.88 6.88a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 0-1.41L9.17 12 2.29 5.12a1 1 0 0 1 0-1.41l1.42-1.42a1 1 0 0 1 1.41 0L12 9.17l6.88-6.88a1 1 0 0 1 1.41 0l1.42 1.42a1 1 0 0 1 0 1.41L14.83 12l6.88 6.88a1 1 0 0 1 0 1.41z"
+              />
+            </svg>
+          </div>
+          <div class="custom-sec-step-content">
+            <p class="custom-sec-step-text">
+              When delivery day arrives, our skilled technicians meticulously
+              handle the installation process, ensuring every component is
+              perfectly positioned and functioning optimally before completion.
+            </p>
+          </div>
+        </div>
+
+        <!-- Arrow 3 -->
+        <div class="custom-sec-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 17.414l-6.707-6.707 1.414-1.414L12 14.586l5.293-5.293 1.414 1.414z"
+            />
+          </svg>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="custom-sec-step">
+          <div class="custom-sec-icon-container">
+            <svg
+              class="custom-sec-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2a10 10 0 0 0-10 10v5h5v-5a5 5 0 0 1 10 0v5h5v-5a10 10 0 0 0-10-10zm0 18a3 3 0 0 1-3-3h6a3 3 0 0 1-3 3z"
+              />
+            </svg>
+          </div>
+          <div class="custom-sec-step-content">
+            <p class="custom-sec-step-text">
+              Following installation, our responsive technical support
+              specialists remain at your service, ensuring your displays
+              maintain peak performance and providing lasting value for your
+              investment.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="custom-sec-cta-container">
+        <button class="custom-sec-cta-button">ENHANCE YOUR DISPLAYS</button>
+      </div>
+    </div>
+
+    <script>
+      // Optional JavaScript for additional interactivity
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add animation to steps when they come into view
+        const steps = document.querySelectorAll(".custom-sec-step");
+
+        // Simple function to check if element is in viewport
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        // Function to add animation class when element is in viewport
+        function checkVisibility() {
+          steps.forEach((step) => {
+            if (isInViewport(step)) {
+              step.style.opacity = "1";
+              step.style.transform = "translateY(0)";
+            }
+          });
+        }
+
+        // Set initial styles for animation
+        steps.forEach((step) => {
+          step.style.opacity = "0";
+          step.style.transform = "translateY(20px)";
+          step.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+
+        // Check visibility on load and scroll
+        window.addEventListener("load", checkVisibility);
+        window.addEventListener("scroll", checkVisibility);
+
+        // Button click effect
+        const ctaButton = document.querySelector(".custom-sec-cta-button");
+        ctaButton.addEventListener("click", function () {
+          this.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            this.style.transform = "";
+          }, 200);
+
+          // You can add your action here
+          console.log("Button clicked!");
+        });
+      });
+    </script>
+  </body>
+</html>
