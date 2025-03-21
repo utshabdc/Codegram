@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Navbar Styles */
+      .custom-nav-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+      }
+
+      /* Three-section layout for desktop */
+      .custom-nav-navbar-left {
+        flex: 1;
+      }
+
+      .custom-nav-navbar-center {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+      }
+
+      .custom-nav-navbar-right {
+        flex: 1;
+        justify-content: flex-end;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Logo Styles */
+      .custom-nav-logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .custom-nav-logo-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .custom-nav-logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .custom-nav-logo-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+        line-height: 1;
+      }
+
+      .custom-nav-logo-subtitle {
+        font-size: 14px;
+        color: #777;
+        margin-top: 2px;
+      }
+
+      /* Navigation Menu */
+      .custom-nav-menu {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+      }
+
+      .custom-nav-item {
+        position: relative;
+        margin: 0 5px;
+      }
+
+      .custom-nav-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 10px 15px;
+        transition: color 0.3s;
+      }
+
+      .custom-nav-link:hover {
+        color: #f03e3e;
+      }
+
+      .custom-nav-link i {
+        margin-left: 5px;
+        font-size: 12px;
+      }
+
+      /* Dropdown Menu */
+      .custom-nav-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 200px;
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        padding: 10px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .custom-nav-item:hover .custom-nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .custom-nav-dropdown-item {
+        display: block;
+        padding: 8px 20px;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .custom-nav-dropdown-item:hover {
+        background-color: #f8f8f8;
+        color: #f03e3e;
+        padding-left: 25px;
+      }
+
+      /* CTA Button */
+      .custom-nav-cta-button {
+        background-color: #f03e3e;
+        color: #fff;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 14px;
+      }
+
+      .custom-nav-cta-button:hover {
+        background-color: #e03131;
+      }
+
+      /* Hamburger Menu */
+      .custom-nav-hamburger {
+        display: none;
+        cursor: pointer;
+        width: 30px;
+        height: 20px;
+        position: relative;
+      }
+
+      .custom-nav-hamburger span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: #333;
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: 0.25s ease-in-out;
+      }
+
+      .custom-nav-hamburger span:nth-child(1) {
+        top: 0px;
+      }
+
+      .custom-nav-hamburger span:nth-child(2) {
+        top: 8px;
+      }
+
+      .custom-nav-hamburger span:nth-child(3) {
+        top: 16px;
+      }
+
+      .custom-nav-hamburger.active span:nth-child(1) {
+        top: 8px;
+        transform: rotate(135deg);
+      }
+
+      .custom-nav-hamburger.active span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+      }
+
+      .custom-nav-hamburger.active span:nth-child(3) {
+        top: 8px;
+        transform: rotate(-135deg);
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 992px) {
+        /* Reset the three-section layout for mobile */
+        .custom-nav-navbar-left,
+        .custom-nav-navbar-center,
+        .custom-nav-navbar-right {
+          flex: auto;
+        }
+
+        .custom-nav-navbar-center {
+          justify-content: flex-end;
+        }
+
+        .custom-nav-hamburger {
+          display: block;
+        }
+
+        .custom-nav-menu {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          flex-direction: column;
+          background-color: #fff;
+          width: 100%;
+          height: calc(100vh - 70px);
+          transition: 0.3s;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          z-index: 99;
+          padding: 20px 0;
+          overflow-y: auto;
+          justify-content: flex-start;
+        }
+
+        .custom-nav-menu.active {
+          left: 0;
+        }
+
+        .custom-nav-item {
+          margin: 5px 0;
+          width: 100%;
+        }
+
+        .custom-nav-link {
+          padding: 15px 5%;
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .custom-nav-dropdown {
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          max-height: 0;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          transition: max-height 0.3s ease;
+          overflow: hidden;
+          padding: 0;
+        }
+
+        .custom-nav-dropdown.show {
+          max-height: 500px;
+        }
+
+        .custom-nav-dropdown-item {
+          padding: 12px 10%;
+          background-color: #f8f8f8;
+        }
+
+        .custom-nav-dropdown-item:hover {
+          padding-left: 12%;
+        }
+
+        .custom-nav-navbar {
+          padding: 15px 5%;
+        }
+
+        .custom-nav-cta-button {
+          padding: 10px 20px;
+          font-size: 13px;
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .custom-nav-logo-title {
+          font-size: 20px;
+        }
+
+        .custom-nav-logo-subtitle {
+          font-size: 12px;
+        }
+
+        .custom-nav-logo-icon {
+          width: 35px;
+          height: 35px;
+        }
+
+        .custom-nav-cta-button {
+          padding: 8px 16px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="custom-nav-navbar">
+        <div class="custom-nav-navbar-left">
+          <a href="#" class="custom-nav-logo">
+            <svg
+              class="custom-nav-logo-icon"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M50,10 L10,50 L20,50 L20,85 L80,85 L80,50 L90,50 L50,10 Z"
+                fill="#f03e3e"
+              />
+              <circle cx="50" cy="50" r="15" fill="#fff" />
+            </svg>
+            <div class="custom-nav-logo-text">
+              <span class="custom-nav-logo-title">Roofer</span>
+              <span class="custom-nav-logo-subtitle">Roof Services</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="custom-nav-navbar-center">
+          <ul class="custom-nav-menu">
+            <li class="custom-nav-item">
+              <a href="#" class="custom-nav-link">
+                Home
+                <i class="fas fa-chevron-down"></i>
+              </a>
+              <div class="custom-nav-dropdown">
+                <a href="#" class="custom-nav-dropdown-item">Home Style 1</a>
+                <a href="#" class="custom-nav-dropdown-item">Home Style 2</a>
+                <a href="#" class="custom-nav-dropdown-item">Home Style 3</a>
+              </div>
+            </li>
+            <li class="custom-nav-item">
+              <a href="#" class="custom-nav-link">About Us</a>
+            </li>
+            <li class="custom-nav-item">
+              <a href="#" class="custom-nav-link">
+                Services
+                <i class="fas fa-chevron-down"></i>
+              </a>
+              <div class="custom-nav-dropdown">
+                <a href="#" class="custom-nav-dropdown-item"
+                  >Roof Installation</a
+                >
+                <a href="#" class="custom-nav-dropdown-item">Roof Repair</a>
+                <a href="#" class="custom-nav-dropdown-item"
+                  >Roof Maintenance</a
+                >
+                <a href="#" class="custom-nav-dropdown-item">Gutter Services</a>
+              </div>
+            </li>
+            <li class="custom-nav-item">
+              <a href="#" class="custom-nav-link">
+                Pages
+                <i class="fas fa-chevron-down"></i>
+              </a>
+              <div class="custom-nav-dropdown">
+                <a href="#" class="custom-nav-dropdown-item">Our Team</a>
+                <a href="#" class="custom-nav-dropdown-item">Testimonials</a>
+                <a href="#" class="custom-nav-dropdown-item">FAQ</a>
+                <a href="#" class="custom-nav-dropdown-item">Pricing</a>
+              </div>
+            </li>
+            <li class="custom-nav-item">
+              <a href="#" class="custom-nav-link">
+                News
+                <i class="fas fa-chevron-down"></i>
+              </a>
+              <div class="custom-nav-dropdown">
+                <a href="#" class="custom-nav-dropdown-item">Blog</a>
+                <a href="#" class="custom-nav-dropdown-item">News & Updates</a>
+                <a href="#" class="custom-nav-dropdown-item">Press Releases</a>
+              </div>
+            </li>
+            <li class="custom-nav-item">
+              <a href="#" class="custom-nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="custom-nav-navbar-right">
+          <button class="custom-nav-cta-button">FREE ESTIMATE</button>
+          <div class="custom-nav-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".custom-nav-hamburger");
+        const navMenu = document.querySelector(".custom-nav-menu");
+        const navLinks = document.querySelectorAll(".custom-nav-link");
+
+        // Toggle mobile menu
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        });
+
+        // Handle dropdown menus on mobile
+        navLinks.forEach((link) => {
+          if (
+            link.nextElementSibling &&
+            link.nextElementSibling.classList.contains("custom-nav-dropdown")
+          ) {
+            link.addEventListener("click", function (e) {
+              // Only for mobile view
+              if (window.innerWidth <= 992) {
+                e.preventDefault();
+                const dropdown = this.nextElementSibling;
+
+                // Close all other dropdowns
+                document
+                  .querySelectorAll(".custom-nav-dropdown")
+                  .forEach((drop) => {
+                    if (drop !== dropdown) {
+                      drop.classList.remove("show");
+                    }
+                  });
+
+                // Toggle current dropdown
+                dropdown.classList.toggle("show");
+              }
+            });
+          }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            !e.target.closest(".custom-nav-menu") &&
+            !e.target.closest(".custom-nav-hamburger") &&
+            navMenu.classList.contains("active")
+          ) {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+          }
+        });
+
+        // Close mobile menu when window is resized to desktop size
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 992) {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            document
+              .querySelectorAll(".custom-nav-dropdown")
+              .forEach((dropdown) => {
+                dropdown.classList.remove("show");
+              });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

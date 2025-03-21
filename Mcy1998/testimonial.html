@@ -21,18 +21,18 @@
         color: #fff;
       }
 
-      section {
+      .section-testimonial {
         padding: 60px 20px;
         overflow: hidden;
         position: relative;
       }
 
-      .container {
+      .custom-cus-container {
         max-width: 1200px;
         margin: 0 auto;
       }
 
-      .section-title {
+      .custom-cus-section-title {
         text-align: center;
         margin-bottom: 50px;
         position: relative;
@@ -41,8 +41,8 @@
         letter-spacing: 2px;
       }
 
-      .section-title::before,
-      .section-title::after {
+      .custom-cus-section-title::before,
+      .custom-cus-section-title::after {
         content: "";
         display: inline-block;
         width: 100px;
@@ -53,37 +53,37 @@
       }
 
       @media (max-width: 768px) {
-        .section-title {
+        .custom-cus-section-title {
           font-size: 2rem;
         }
-        .section-title::before,
-        .section-title::after {
+        .custom-cus-section-title::before,
+        .custom-cus-section-title::after {
           width: 50px;
         }
       }
 
       @media (max-width: 480px) {
-        .section-title {
+        .custom-cus-section-title {
           font-size: 1.5rem;
         }
-        .section-title::before,
-        .section-title::after {
+        .custom-cus-section-title::before,
+        .custom-cus-section-title::after {
           width: 30px;
         }
       }
 
-      .testimonial-slider {
+      .custom-cus-testimonial-slider {
         position: relative;
         width: 100%;
       }
 
-      .slider-container {
+      .custom-cus-slider-container {
         display: flex;
         transition: transform 0.5s ease;
         margin: 0 -15px;
       }
 
-      .testimonial-card {
+      .custom-cus-testimonial-card {
         flex: 0 0 calc(33.333% - 30px);
         margin: 0 15px;
         background-color: #111;
@@ -94,24 +94,24 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .testimonial-card:hover {
+      .custom-cus-testimonial-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
       }
 
       @media (max-width: 992px) {
-        .testimonial-card {
+        .custom-cus-testimonial-card {
           flex: 0 0 calc(50% - 30px);
         }
       }
 
       @media (max-width: 768px) {
-        .testimonial-card {
+        .custom-cus-testimonial-card {
           flex: 0 0 calc(100% - 30px);
         }
       }
 
-      .profile-img {
+      .custom-cus-profile-img {
         width: 100px;
         height: 100px;
         border-radius: 50%;
@@ -122,49 +122,49 @@
         background-color: #fff;
       }
 
-      .profile-img img {
+      .custom-cus-profile-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      .testimonial-name {
+      .custom-cus-testimonial-name {
         color: #3498db;
         font-size: 1.2rem;
         margin-bottom: 5px;
         font-weight: 700;
       }
 
-      .testimonial-designation {
+      .custom-cus-testimonial-designation {
         color: #aaa;
         font-size: 0.9rem;
         margin-bottom: 20px;
       }
 
-      .testimonial-text {
+      .custom-cus-testimonial-text {
         color: #ddd;
         line-height: 1.6;
         margin-bottom: 25px;
       }
 
-      .social-icons {
+      .custom-cus-social-icons {
         display: flex;
         justify-content: center;
         gap: 15px;
       }
 
-      .social-icons a {
+      .custom-cus-social-icons a {
         color: #3498db;
         font-size: 1.2rem;
         transition: color 0.3s ease, transform 0.3s ease;
       }
 
-      .social-icons a:hover {
+      .custom-cus-social-icons a:hover {
         color: #fff;
         transform: scale(1.2);
       }
 
-      .slider-nav {
+      .custom-cus-slider-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -180,37 +180,37 @@
         transition: background 0.3s ease;
       }
 
-      .slider-nav:hover {
+      .custom-cus-slider-nav:hover {
         background: rgba(255, 255, 255, 0.4);
       }
 
-      .prev {
+      .custom-cus-prev {
         left: 10px;
       }
 
-      .next {
+      .custom-cus-next {
         right: 10px;
       }
 
-      .slider-nav i {
+      .custom-cus-slider-nav i {
         color: #fff;
         font-size: 1.2rem;
       }
 
       /* For cloned elements in infinite slider */
-      .clone {
+      .custom-cus-clone {
         flex: 0 0 calc(33.333% - 30px);
         margin: 0 15px;
       }
 
       @media (max-width: 992px) {
-        .clone {
+        .custom-cus-clone {
           flex: 0 0 calc(50% - 30px);
         }
       }
 
       @media (max-width: 768px) {
-        .clone {
+        .custom-cus-clone {
           flex: 0 0 calc(100% - 30px);
         }
       }
@@ -218,18 +218,18 @@
   </head>
   <body>
     <section>
-      <div class="container">
-        <h2 class="section-title">TESTIMONIAL SLIDER</h2>
+      <div class="custom-cus-container">
+        <h2 class="custom-cus-section-title">WHAT OUR CLIENTS ARE SAYING</h2>
 
-        <div class="testimonial-slider">
-          <div class="slider-container" id="slider">
+        <div class="custom-cus-testimonial-slider">
+          <div class="custom-cus-slider-container" id="slider">
             <!-- Testimonial cards will be added dynamically with JavaScript -->
           </div>
 
-          <div class="slider-nav prev" id="prev">
+          <div class="custom-cus-slider-nav custom-cus-prev" id="prev">
             <i class="fas fa-chevron-left"></i>
           </div>
-          <div class="slider-nav next" id="next">
+          <div class="custom-cus-slider-nav custom-cus-next" id="next">
             <i class="fas fa-chevron-right"></i>
           </div>
         </div>
@@ -242,37 +242,23 @@
         const testimonials = [
           {
             image: "https://randomuser.me/api/portraits/men/32.jpg",
-            name: "PERSON'S NAME",
+            name: "Emmiul Smith",
             designation: "Designation Goes Here",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
+            text: "The team at Bay Area TechLead helped us from start to finish. The installation was seamless, and their customer service was top-notch.",
             socials: ["instagram", "facebook", "linkedin", "youtube"],
           },
           {
             image: "https://randomuser.me/api/portraits/men/41.jpg",
-            name: "PERSON'S NAME",
+            name: "Mathew",
             designation: "Designation Goes Here",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
+            text: "We used their LED video walls for an event, and the feedback was amazing! The visuals were crisp and stunning, making everything come alive.",
             socials: ["instagram", "facebook", "linkedin", "youtube"],
           },
           {
             image: "https://randomuser.me/api/portraits/women/44.jpg",
-            name: "PERSON'S NAME",
+            name: "Emmily ",
             designation: "Designation Goes Here",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
-            socials: ["instagram", "facebook", "linkedin", "youtube"],
-          },
-          {
-            image: "https://randomuser.me/api/portraits/women/68.jpg",
-            name: "PERSON'S NAME",
-            designation: "Designation Goes Here",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
-            socials: ["instagram", "facebook", "linkedin", "youtube"],
-          },
-          {
-            image: "https://randomuser.me/api/portraits/men/75.jpg",
-            name: "PERSON'S NAME",
-            designation: "Designation Goes Here",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since",
+            text: "I was blown away by the quality of the LED video wall. It’s incredibly vibrant and has completely transformed our store’s display. Highly recommend!",
             socials: ["instagram", "facebook", "linkedin", "youtube"],
           },
         ];
@@ -285,8 +271,8 @@
         function createTestimonialCard(testimonial, isClone = false) {
           const card = document.createElement("div");
           card.className = isClone
-            ? "testimonial-card clone"
-            : "testimonial-card";
+            ? "custom-cus-testimonial-card custom-cus-clone"
+            : "custom-cus-testimonial-card";
 
           const socialIcons = testimonial.socials
             .map((social) => {
@@ -309,16 +295,16 @@
               }
               return `<a href="#"><i class="fab ${icon}"></i></a>`;
             })
-            .join("");
+            .join(" ");
 
-          card.innerHTML = `
-                    <div class="profile-img">
+          card.innerHTML = ` 
+                    <div class="custom-cus-profile-img">
                         <img src="${testimonial.image}" alt="${testimonial.name}">
                     </div>
-                    <h3 class="testimonial-name">${testimonial.name}</h3>
-                    <p class="testimonial-designation">${testimonial.designation}</p>
-                    <p class="testimonial-text">${testimonial.text}</p>
-                    <div class="social-icons">
+                    <h3 class="custom-cus-testimonial-name">${testimonial.name}</h3>
+                    <p class="custom-cus-testimonial-designation">${testimonial.designation}</p>
+                    <p class="custom-cus-testimonial-text">${testimonial.text}</p>
+                   <div class="custom-cus-social-icons">
                         ${socialIcons}
                     </div>
                 `;
