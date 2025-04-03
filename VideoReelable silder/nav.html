@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sprocket Rocket - Sticky Header</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      } /* Header styles */
+      .header {
+        width: 100%;
+        background-image: linear-gradient(
+            rgba(0, 0, 20, 0.9),
+            rgba(0, 0, 20, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+      .header.sticky {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-image: linear-gradient(
+            rgba(0, 0, 20, 0.95),
+            rgba(0, 0, 20, 0.95)
+          ),
+          url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      } /* Logo styles */
+      .logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+      }
+      .logo svg {
+        margin-right: 10px;
+      } /* Navigation menu */
+      .nav-menu ul {
+        display: flex;
+        list-style: none;
+      }
+      .nav-menu li {
+        position: relative;
+        margin: 0 15px;
+      }
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        display: block;
+        padding: 10px 0;
+        transition: color 0.3s;
+      }
+      .nav-menu a:hover {
+        color: #4d84ff;
+      }
+      .dropdown-arrow {
+        font-size: 10px;
+        margin-left: 5px;
+      } /* Active menu item */
+      .nav-menu li.active a {
+        color: #4d84ff;
+      } /* Dropdown menu */
+      .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #0a0a20;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        border-radius: 5px;
+      }
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown-content a:hover {
+        background-color: #1a1a30;
+      }
+      .dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      } /* CTA Button */
+      .btn {
+        display: inline-block;
+        background-color: #4d84ff;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #3a6fd9;
+      } /* Mobile menu toggle */
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+      }
+      .mobile-menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      } /* Content area */
+      .content {
+        margin-top: 100px;
+        padding: 20px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      } /* Responsive styles */
+      @media (max-width: 992px) {
+        .nav-menu {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 80%;
+          height: calc(100vh - 70px);
+          background-color: #0a0a20;
+          transition: all 0.4s ease;
+          overflow-y: auto;
+          z-index: 1000;
+        }
+        .nav-menu.active {
+          left: 0;
+        }
+        .nav-menu ul {
+          flex-direction: column;
+          padding: 20px;
+        }
+        .nav-menu li {
+          margin: 0;
+          margin-bottom: 15px;
+        }
+        .dropdown-content {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          background-color: #1a1a30;
+          display: none;
+          margin-top: 10px;
+        }
+        .dropdown.active .dropdown-content {
+          display: block;
+        }
+        .mobile-menu-toggle {
+          display: flex;
+        }
+        .cta-button {
+          margin-right: 20px;
+        }
+      }
+      @media (max-width: 576px) {
+        .logo span {
+          display: none;
+        }
+        .cta-button .btn {
+          padding: 10px 16px;
+          font-size: 14px;
+        }
+      }
+      @media (min-width: 768px) {
+        /* .mobile-button {
+          display: none;
+        } */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="sticky-header">
+      <div class="container">
+        <div class="logo">
+          <a href="#">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="20" cy="20" r="19" stroke="white" stroke-width="2" />
+              <path
+                d="M20 10C18.5 10 15 11 15 15V19L12 22V25H28V22L25 19V15C25 11 21.5 10 20 10Z"
+                stroke="white"
+                stroke-width="2"
+              />
+              <path
+                d="M17 25V27C17 28.6569 18.3431 30 20 30C21.6569 30 23 28.6569 23 27V25"
+                stroke="white"
+                stroke-width="2"
+              />
+            </svg>
+            <span>Sprocket <strong>Rocket</strong></span>
+          </a>
+        </div>
+
+        <nav class="nav-menu">
+          <ul>
+            <li class="dropdown">
+              <a href="#">Presets <span class="dropdown-arrow">▼</span></a>
+              <div class="dropdown-content">
+                <a href="#">Preset 1</a>
+                <a href="#">Preset 2</a>
+                <a href="#">Preset 3</a>
+              </div>
+            </li>
+            <li class="dropdown active">
+              <a href="#"
+                >Page Templates <span class="dropdown-arrow">▼</span></a
+              >
+              <div class="dropdown-content">
+                <a href="#">Template 1</a>
+                <a href="#">Template 2</a>
+                <a href="#">Template 3</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#">Products <span class="dropdown-arrow">▼</span></a>
+              <div class="dropdown-content">
+                <a href="#">Product 1</a>
+                <a href="#">Product 2</a>
+                <a href="#">Product 3</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#">Resources <span class="dropdown-arrow">▼</span></a>
+              <div class="dropdown-content">
+                <a href="#">Resource 1</a>
+                <a href="#">Resource 2</a>
+                <a href="#">Resource 3</a>
+              </div>
+              <div class="cta-button">
+                <a href="#" class="btn">Get Started</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="cta-button mobile-button">
+          <a href="#" class="btn">Get Started</a>
+        </div>
+
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <h1>Welcome to Sprocket Rocket</h1>
+      <p>Scroll down to see the sticky header in action!</p>
+
+      <!-- Adding some content to enable scrolling -->
+      <div style="height: 200vh; padding: 20px">
+        <h2>Sample Content</h2>
+        <p>
+          This is just sample content to demonstrate the sticky header
+          functionality.
+        </p>
+        <p>As you scroll down, the header will stick to the top of the page.</p>
+      </div>
+    </div>
+
+    <script>
+      // Sticky header functionality
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("sticky-header");
+        if (window.scrollY > 50) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      });
+
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      mobileMenuToggle.addEventListener("click", function () {
+        navMenu.classList.toggle("active");
+        this.classList.toggle("active");
+      });
+
+      // Handle dropdown menus on mobile
+      const dropdowns = document.querySelectorAll(".dropdown");
+
+      // For mobile devices, make dropdowns clickable
+      if (window.innerWidth <= 992) {
+        dropdowns.forEach((dropdown) => {
+          const link = dropdown.querySelector("a");
+
+          link.addEventListener("click", function (e) {
+            if (window.innerWidth <= 992) {
+              e.preventDefault();
+              dropdown.classList.toggle("active");
+
+              // Close other dropdowns
+              dropdowns.forEach((otherDropdown) => {
+                if (otherDropdown !== dropdown) {
+                  otherDropdown.classList.remove("active");
+                }
+              });
+            }
+          });
+        });
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (e) {
+        if (
+          !navMenu.contains(e.target) &&
+          !mobileMenuToggle.contains(e.target) &&
+          navMenu.classList.contains("active")
+        ) {
+          navMenu.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+        }
+      });
+
+      // Handle window resize
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 992) {
+          navMenu.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+
+          // Remove active class from dropdowns
+          dropdowns.forEach((dropdown) => {
+            dropdown.classList.remove("active");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
