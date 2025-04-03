@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us Section</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Base styles and reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f8f8fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* About section styles */
+      .about-section {
+        padding: 60px 20px;
+        background-color: #f8f8fa;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Section header styles */
+      .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #6b5dd3;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      .section-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.3;
+      }
+
+      /* Cards container */
+      .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      /* Card styles */
+      .card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+        flex: 1;
+        min-width: 300px;
+        max-width: 380px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card:hover {
+        background-color: #082046;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(8, 32, 70, 0.2);
+      }
+
+      .card:hover .card-title,
+      .card:hover .card-description {
+        color: #fff;
+      }
+
+      .card:hover .card-icon svg path {
+        stroke: #fff;
+      }
+
+      .card:hover .card-icon svg path[fill="#6B5DD3"] {
+        fill: #fff;
+      }
+
+      .card-icon {
+        margin-bottom: 25px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #222;
+        transition: color 0.3s ease;
+      }
+
+      .card-description {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.7;
+        transition: color 0.3s ease;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1200px) {
+        .cards-container {
+          gap: 20px;
+        }
+
+        .card {
+          padding: 30px 20px;
+          min-width: 280px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .section-title {
+          font-size: 32px;
+        }
+
+        .card {
+          flex: 0 0 calc(50% - 20px);
+          max-width: calc(50% - 20px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .about-section {
+          padding: 50px 15px;
+        }
+
+        .section-title {
+          font-size: 28px;
+        }
+
+        .card {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-title {
+          font-size: 24px;
+        }
+
+        .card {
+          padding: 25px 15px;
+        }
+
+        .card-title {
+          font-size: 20px;
+        }
+
+        .card-description {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">ABOUT US</span>
+          <h2 class="section-title">
+            Our goal is to<br />make your life easier
+          </h2>
+        </div>
+
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-icon">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24 12V16"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M36 24H32"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 24H12"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M32.5 15.5L29.5 18.5"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M18.5 29.5L15.5 32.5"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M32.5 32.5L29.5 29.5"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M18.5 18.5L15.5 15.5"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M24 36V32"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20C21.7909 20 20 21.7909 20 24C20 26.2091 21.7909 28 24 28Z"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="card-title">Smart Solutions</h3>
+            <p class="card-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit Ea
+              laudantium empore nobis quisquam.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24 36V42"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 42H32"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M24 30C28.4183 30 32 26.4183 32 22C32 17.5817 28.4183 14 24 14C19.5817 14 16 17.5817 16 22C16 26.4183 19.5817 30 24 30Z"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10.9312 10.9333L14.5312 14.5333"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10.9312 33.0667L14.5312 29.4667"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M37.0688 10.9333L33.4688 14.5333"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M37.0688 33.0667L33.4688 29.4667"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M24 8V14"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 22H14"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M34 22H40"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="card-title">Create Idea</h3>
+            <p class="card-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit Ea
+              laudantium empore nobis quisquam.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M40 16H32C29.7909 16 28 17.7909 28 20V32C28 34.2091 29.7909 36 32 36H40C42.2091 36 44 34.2091 44 32V20C44 17.7909 42.2091 16 40 16Z"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M28 24H8"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 16H8"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20 32H8"
+                  stroke="#6B5DD3"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M36 26C37.1046 26 38 25.1046 38 24C38 22.8954 37.1046 22 36 22C34.8954 22 34 22.8954 34 24C34 25.1046 34.8954 26 36 26Z"
+                  fill="#6B5DD3"
+                />
+              </svg>
+            </div>
+            <h3 class="card-title">Free Support</h3>
+            <p class="card-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit Ea
+              laudantium empore nobis quisquam.
+            </p>
+          </div>
+
+          <!-- Uncomment to add a 4th card
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" stroke="#6B5DD3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 30L30 18" stroke="#6B5DD3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 18H30V30" stroke="#6B5DD3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Fast Growth</h3>
+                    <p class="card-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit Ea laudantium empore nobis quisquam.
+                    </p>
+                </div>
+                -->
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // This script adds smooth hover transitions and can be extended for additional functionality
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all cards
+        const cards = document.querySelectorAll(".card");
+
+        // Add event listeners for each card
+        cards.forEach((card) => {
+          // Optional: Add click functionality
+          card.addEventListener("click", function () {
+            // You can add functionality here if needed
+            // For example, navigate to a details page or show a modal
+          });
+
+          // Optional: Add animation when cards enter viewport
+          if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    setTimeout(() => {
+                      entry.target.style.opacity = 1;
+                      entry.target.style.transform = "translateY(0)";
+                    }, 100 * Array.from(cards).indexOf(entry.target));
+                    observer.unobserve(entry.target);
+                  }
+                });
+              },
+              { threshold: 0.1 }
+            );
+
+            // Initially set cards to be slightly below their position and transparent
+            card.style.opacity = 0;
+            card.style.transform = "translateY(20px)";
+            card.style.transition =
+              "opacity 0.5s ease, transform 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease";
+
+            observer.observe(card);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
