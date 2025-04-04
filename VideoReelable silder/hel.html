@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Cards Section</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #221e14;
+        background-color: #fff;
+        line-height: 1.6;
+      }
+
+      /* Section styles */
+      .features-section {
+        padding: 80px 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 40px;
+      }
+
+      /* Left column with feature cards */
+      .left-column {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+        padding: 40px 0;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 234, 67, 0.1),
+          rgba(11, 34, 69, 0.05)
+        );
+        opacity: 0.7;
+        z-index: -1;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(11, 34, 69, 0.1);
+        background-color: #082046;
+      }
+
+      .feature-card:hover h3,
+      .feature-card:hover p {
+        color: white;
+      }
+
+      .feature-card:hover .icon-container {
+        background-color: rgba(255, 234, 67, 0.3);
+      }
+
+      .feature-card:hover svg path,
+      .feature-card:hover svg rect {
+        stroke: #ffea43;
+      }
+
+      .icon-container {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(255, 234, 67, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+      }
+      .icon-container img {
+        width: 20px;
+      }
+      .feature-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #0b2245;
+        transition: all 0.3s ease;
+      }
+
+      .feature-card p {
+        font-size: 14px;
+        color: #424136;
+        transition: all 0.3s ease;
+      }
+
+      /* Decorative elements */
+      .decorative-circle {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid rgba(11, 34, 69, 0.2);
+        z-index: 1;
+      }
+
+      #circle1 {
+        top: 15%;
+        right: 30%;
+      }
+
+      #circle2 {
+        top: 40%;
+        right: 10%;
+      }
+
+      #circle3 {
+        bottom: 30%;
+        left: 15%;
+      }
+
+      #circle4 {
+        bottom: 10%;
+        right: 40%;
+      }
+
+      .decorative-line {
+        position: absolute;
+        border: 1px dashed rgba(11, 34, 69, 0.2);
+        z-index: 1;
+      }
+
+      #line1 {
+        width: 150px;
+        top: 20%;
+        right: 20%;
+        transform: rotate(-30deg);
+      }
+
+      #line2 {
+        height: 120px;
+        top: 40%;
+        right: 25%;
+        transform: rotate(90deg);
+      }
+
+      #line3 {
+        width: 180px;
+        bottom: 25%;
+        left: 20%;
+        transform: rotate(45deg);
+      }
+
+      /* Right column with content */
+      .right-column {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+      }
+
+      .subtitle {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 500;
+        color: #0b2245;
+        margin-bottom: 15px;
+      }
+
+      .title {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: #0b2245;
+      }
+
+      .description {
+        font-size: 16px;
+        color: #424136;
+        margin-bottom: 30px;
+        max-width: 600px;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #0b2245, #1a3a6c);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(11, 34, 69, 0.2);
+      }
+
+      .cta-button:hover {
+        background: linear-gradient(135deg, #0b2245, #0d2b52);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(11, 34, 69, 0.3);
+      }
+
+      /* Card-specific styling */
+      #card1 {
+        background-color: rgba(255, 234, 67, 0.05);
+      }
+
+      #card2 {
+        background-color: rgba(11, 34, 69, 0.05);
+      }
+
+      #card3 {
+        background-color: rgba(255, 234, 67, 0.05);
+      }
+
+      #card4 {
+        background-color: rgba(11, 34, 69, 0.05);
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1200px) {
+        .title {
+          font-size: 36px;
+        }
+
+        .feature-card {
+          padding: 25px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .container {
+          flex-direction: column-reverse;
+        }
+
+        .left-column,
+        .right-column {
+          width: 100%;
+        }
+
+        .feature-grid {
+          max-width: 700px;
+          margin: 0 auto;
+        }
+
+        .right-column {
+          text-align: center;
+          padding-bottom: 40px;
+        }
+
+        .description {
+          margin: 0 auto 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .feature-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .title {
+          font-size: 30px;
+        }
+
+        .decorative-line,
+        .decorative-circle {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .features-section {
+          padding: 60px 15px;
+        }
+
+        .title {
+          font-size: 26px;
+        }
+
+        .feature-card {
+          padding: 20px;
+        }
+
+        .feature-card h3 {
+          font-size: 18px;
+        }
+      }
+
+      /* Animation for CTA button */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse {
+        animation: pulse 1s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="features-section">
+      <div class="container">
+        <div class="left-column">
+          <div class="feature-grid">
+            <div class="feature-card" id="card1">
+              <div class="icon-container">
+                <img src="assets/app.png" alt="" />
+              </div>
+              <h3>Customized Design</h3>
+              <p>Every product must make a statement and we're ready</p>
+            </div>
+
+            <div class="feature-card" id="card2">
+              <div class="icon-container">
+                <img src="assets/app.png" alt="" />
+              </div>
+              <h3>Browser Compatibility</h3>
+              <p>Every product must make a statement and we're ready</p>
+            </div>
+
+            <div class="feature-card" id="card3">
+              <div class="icon-container">
+                <img src="assets/app.png" alt="" />
+              </div>
+              <h3>Incomparable Design</h3>
+              <p>Every product must make a statement and we're ready</p>
+            </div>
+
+            <div class="feature-card" id="card4">
+              <div class="icon-container">
+                <img src="assets/app.png" alt="" />
+              </div>
+              <h3>Responsive Device</h3>
+              <p>Every product must make a statement and we're ready</p>
+            </div>
+          </div>
+
+          <!-- Decorative elements -->
+          <div class="decorative-circle" id="circle1"></div>
+          <div class="decorative-circle" id="circle2"></div>
+          <div class="decorative-circle" id="circle3"></div>
+          <div class="decorative-circle" id="circle4"></div>
+          <div class="decorative-line" id="line1"></div>
+          <div class="decorative-line" id="line2"></div>
+          <div class="decorative-line" id="line3"></div>
+        </div>
+
+        <div class="right-column">
+          <span class="subtitle">Planning on Developing a Product</span>
+          <h2 class="title">Popular Features that your Business Needs</h2>
+          <p class="description">
+            We develop the relationships that underpin the next phase in your
+            organisation's growth. We do this by discerning the relationships
+            that underpin the next phase in your organisation's growth. We do
+            this by discerning the relationships that underpin your growth.
+          </p>
+          <button class="cta-button">START NOW</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate the feature cards on scroll
+        const cards = document.querySelectorAll(".feature-card");
+        const decorativeElements = document.querySelectorAll(
+          ".decorative-circle, .decorative-line"
+        );
+
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        // Function to handle scroll animation
+        function handleScrollAnimation() {
+          // Animate cards when they come into view
+          cards.forEach((card, index) => {
+            if (isInViewport(card) && !card.classList.contains("animated")) {
+              setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+                card.classList.add("animated");
+              }, index * 150);
+            }
+          });
+
+          // Animate decorative elements
+          decorativeElements.forEach((element, index) => {
+            if (
+              isInViewport(element) &&
+              !element.classList.contains("animated")
+            ) {
+              setTimeout(() => {
+                element.style.opacity = "1";
+                element.classList.add("animated");
+              }, index * 100 + 500);
+            }
+          });
+        }
+
+        // Initialize card states
+        cards.forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+
+        // Initialize decorative elements
+        decorativeElements.forEach((element) => {
+          element.style.opacity = "0";
+          element.style.transition = "opacity 0.8s ease";
+        });
+
+        // Run once on load
+        handleScrollAnimation();
+
+        // Add scroll event listener
+        window.addEventListener("scroll", handleScrollAnimation);
+
+        // Add pulse animation to CTA button
+        const ctaButton = document.querySelector(".cta-button");
+
+        function addPulseAnimation() {
+          ctaButton.classList.add("pulse");
+          setTimeout(() => {
+            ctaButton.classList.remove("pulse");
+          }, 1000);
+        }
+
+        // Add pulse animation every 5 seconds
+        setInterval(addPulseAnimation, 5000);
+
+        // Add pulse animation on page load after 2 seconds
+        setTimeout(addPulseAnimation, 2000);
+      });
+    </script>
+  </body>
+</html>
