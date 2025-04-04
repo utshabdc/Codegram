@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portrait Video Carousel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    />
+    <style>
+      /* Base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .reelcontainer {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Section styles */
+      .reelvideo-carousel-section {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .reelsection-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      /* Carousel container */
+      .reelcarousel-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      /* Navigation buttons */
+      .reelnav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.6);
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .reelnav-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .reelprev-button {
+        left: -24px;
+      }
+
+      .reelnext-button {
+        right: -24px;
+      }
+
+      /* Carousel track */
+      .reelcarousel-track-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .reelcarousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      /* Carousel items */
+      .reelcarousel-item {
+        flex: 0 0 calc(25% - 20px); /* Show 4 items by default */
+        transition: all 0.3s ease;
+      }
+
+      /* Video cards */
+      .reelvideo-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .reelvideo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .reelvideo-thumbnail {
+        position: relative;
+        width: 100%;
+        padding-top: 177.78%; /* 9:16 aspect ratio for portrait videos */
+        overflow: hidden;
+      }
+
+      .reelvideo-thumbnail img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .reelvideo-card:hover .reelvideo-thumbnail img {
+        transform: scale(1.05);
+      }
+
+      .reelplay-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 2;
+      }
+
+      .reelplay-button:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .reelvideo-title {
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #333;
+        flex-grow: 1;
+      }
+
+      /* Video modal */
+      .reelvideo-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .reelmodal-content {
+        position: relative;
+        width: 90%;
+        max-width: 500px; /* Narrower for portrait videos */
+        max-height: 90vh;
+      }
+
+      .reelclose-button {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      .reelvideo-container {
+        width: 100%;
+        padding-top: 177.78%; /* 9:16 aspect ratio for portrait videos */
+        position: relative;
+      }
+
+      .reelvideo-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        object-fit: cover;
+      }
+
+      /* Pagination indicators */
+      .reelpagination-indicators {
+        display: none;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .reelindicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .reelindicator.reelactive {
+        background-color: #333;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1200px) {
+        .reelcarousel-item {
+          flex: 0 0 calc(33.333% - 20px); /* Show 3 items */
+        }
+      }
+
+      @media (max-width: 992px) {
+        .reelcarousel-item {
+          flex: 0 0 calc(50% - 20px); /* Show 2 items */
+        }
+      }
+
+      @media (max-width: 768px) {
+        .reelcarousel-item {
+          flex: 0 0 calc(100% - 20px); /* Show 1 item */
+        }
+
+        .reelsection-title {
+          font-size: 28px;
+          margin-bottom: 30px;
+        }
+
+        .reelpagination-indicators {
+          display: flex;
+        }
+
+        .reelnav-button {
+          width: 40px;
+          height: 40px;
+        }
+
+        .reelprev-button {
+          left: -10px;
+        }
+
+        .reelnext-button {
+          right: -10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .reelcontainer {
+          padding: 20px 15px;
+        }
+
+        .reelsection-title {
+          font-size: 24px;
+          margin-bottom: 25px;
+        }
+
+        .reelvideo-title {
+          font-size: 14px;
+          padding: 12px;
+        }
+
+        .reelnav-button {
+          width: 36px;
+          height: 36px;
+        }
+
+        .reelnav-button svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .reelmodal-content {
+          width: 95%;
+        }
+      }
+      @media (min-width: 768px) {
+        .reelsection-description {
+          max-width: 60%;
+          margin: -20px auto 0 auto;
+          text-align: center;
+        }
+      }
+      /* No transition class for instant repositioning */
+      .reelno-transition {
+        transition: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reelcontainer">
+      <section class="reelvideo-carousel-section">
+        <h2 class="reelsection-title">Featured Videos</h2>
+        <p class="reelsection-description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, illo
+          nisi tenetur ea autem quae adipisci assumenda tempora, quia modi ab
+          labore. Cumque aperiam ab expedita autem qui eius earum.
+        </p>
+        <div class="reelcarousel-container">
+          <button
+            class="reelnav-button reelprev-button"
+            id="prevButton"
+            aria-label="Previous videos"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div class="reelcarousel-track-container">
+            <div class="reelcarousel-track" id="carouselTrack">
+              <!-- Video items will be dynamically generated in JavaScript -->
+            </div>
+          </div>
+
+          <button
+            class="reelnav-button reelnext-button"
+            id="nextButton"
+            aria-label="Next videos"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 6L15 12L9 18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="reelvideo-modal" id="videoModal">
+          <div class="reelmodal-content">
+            <button class="reelclose-button" id="closeModal">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6L6 18"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 6L18 18"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="reelvideo-container">
+              <video id="modalVideo" controls></video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Indicators -->
+        <div class="reelpagination-indicators" id="paginationIndicators"></div>
+      </section>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Elements
+        const carouselTrack = document.getElementById("carouselTrack");
+        const prevButton = document.getElementById("prevButton");
+        const nextButton = document.getElementById("nextButton");
+        const videoModal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        const closeModal = document.getElementById("closeModal");
+        const paginationIndicators = document.getElementById(
+          "paginationIndicators"
+        );
+
+        // Video data
+        const videoData = [
+          {
+            id: 1,
+            title: "Moonlit Ocean",
+            thumbnail:
+              "https://images.unsplash.com/photo-1532767153582-b1a0e5145009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+            videoSrc:
+              "https://45133755.fs1.hubspotusercontent-na1.net/hubfs/45133755/video1.mp4",
+          },
+          {
+            id: 2,
+            title: "Sunlit Bedroom",
+            thumbnail:
+              "https://images.unsplash.com/photo-1540991825428-5b54b09f7338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+            videoSrc:
+              "https://player.vimeo.com/external/368484050.sd.mp4?s=e63e98f8e4f1c215a95a9a630b7d7a9c2b7b6a42&profile_id=139&oauth2_token_id=57447761",
+          },
+          {
+            id: 3,
+            title: "Blue Ice Cave",
+            thumbnail:
+              "https://images.unsplash.com/photo-1501908734255-16579c18c25f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+            videoSrc:
+              "https://player.vimeo.com/external/308040879.sd.mp4?s=2e2e542eae7913d8d3c7d0df8e464ee0a7d2f874&profile_id=164&oauth2_token_id=57447761",
+          },
+          {
+            id: 4,
+            title: "Sunset Highway",
+            thumbnail:
+              "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            videoSrc:
+              "https://player.vimeo.com/external/291648067.sd.mp4?s=7f9ee1f8ec1e5376027e4a6d1d05d5738b2fbb29&profile_id=164&oauth2_token_id=57447761",
+          },
+          {
+            id: 5,
+            title: "Clear Blue Sky",
+            thumbnail:
+              "https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1551&q=80",
+            videoSrc:
+              "https://player.vimeo.com/external/214496970.sd.mp4?s=95afd4739e647a4ece0d8bea13ec3a40a1153152&profile_id=164&oauth2_token_id=57447761",
+          },
+          {
+            id: 6,
+            title: "Mountain View",
+            thumbnail:
+              "https://images.unsplash.com/photo-1682686580391-615b1f28e5ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            videoSrc:
+              "https://player.vimeo.com/external/189545487.sd.mp4?s=8cd2af1ec08f7ce121a5a6a09c78c05237943524&profile_id=164&oauth2_token_id=57447761",
+          },
+        ];
+
+        // Variables
+        let currentIndex = 0;
+        let itemWidth;
+        let itemsPerView;
+        let totalItems = videoData.length;
+        let totalSlides;
+        let indicators = [];
+        let isAnimating = false;
+
+        // Create a video card element
+        function createVideoCard(video, isClone = false) {
+          const item = document.createElement("div");
+          item.className = "reelcarousel-item";
+          if (isClone) item.setAttribute("data-clone", "true");
+
+          item.innerHTML = `
+            <div class="reelvideo-card">
+                <div class="reelvideo-thumbnail">
+                    <img src="${video.thumbnail}" alt="${video.title}">
+                    <button class="reelplay-button" data-video-src="${video.videoSrc}">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="24" fill="white" fill-opacity="0.8"/>
+                            <path d="M32 24L20 30.9282L20 17.0718L32 24Z" fill="#1A1A1A"/>
+                        </svg>
+                    </button>
+                </div>
+               
+            </div>
+        `;
+
+          return item;
+        }
+
+        // Initialize carousel with cloned items for infinite scroll
+        function initCarousel() {
+          // Clear existing content
+          carouselTrack.innerHTML = "";
+
+          // Determine items per view based on screen width
+          if (window.innerWidth >= 1200) {
+            itemsPerView = 4;
+          } else if (window.innerWidth >= 992) {
+            itemsPerView = 3;
+          } else if (window.innerWidth >= 768) {
+            itemsPerView = 2;
+          } else {
+            itemsPerView = 1;
+          }
+
+          // Calculate total slides
+          totalSlides = Math.ceil(totalItems / itemsPerView);
+
+          // Add clones at the beginning (last items)
+          for (let i = totalItems - itemsPerView; i < totalItems; i++) {
+            const index = i < 0 ? totalItems + i : i;
+            const clone = createVideoCard(videoData[index], true);
+            carouselTrack.appendChild(clone);
+          }
+
+          // Add original items
+          videoData.forEach((video) => {
+            const item = createVideoCard(video);
+            carouselTrack.appendChild(item);
+          });
+
+          // Add clones at the end (first items)
+          for (let i = 0; i < itemsPerView; i++) {
+            const clone = createVideoCard(videoData[i], true);
+            carouselTrack.appendChild(clone);
+          }
+
+          // Calculate item width
+          const carouselWidth = carouselTrack.parentElement.clientWidth;
+          itemWidth = carouselWidth / itemsPerView;
+
+          // Set width for each item
+          document.querySelectorAll(".reelcarousel-item").forEach((item) => {
+            item.style.flex = `0 0 ${itemWidth}px`;
+            item.style.maxWidth = `${itemWidth}px`;
+            item.style.margin = "0";
+          });
+
+          // Create pagination indicators
+          createPaginationIndicators();
+
+          // Set initial position to show the first real item (skip clones)
+          currentIndex = itemsPerView;
+          updateCarousel(false);
+
+          // Add event listeners to play buttons
+          setupPlayButtons();
+        }
+
+        // Setup play buttons for all items including clones
+        function setupPlayButtons() {
+          const playButtons = document.querySelectorAll(".reelplay-button");
+          playButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const videoSrc = button.getAttribute("data-video-src");
+              modalVideo.src = videoSrc;
+              videoModal.style.display = "flex";
+
+              // Set video attributes for portrait mode
+              modalVideo.setAttribute("playsinline", "");
+              modalVideo.setAttribute("controls", "");
+
+              modalVideo.play();
+            });
+          });
+        }
+
+        // Create pagination indicators
+        function createPaginationIndicators() {
+          // Clear existing indicators
+          paginationIndicators.innerHTML = "";
+          indicators = [];
+
+          // Create new indicators
+          for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement("div");
+            indicator.classList.add("reelindicator");
+
+            indicator.addEventListener("click", () => {
+              goToSlide(i);
+            });
+
+            paginationIndicators.appendChild(indicator);
+            indicators.push(indicator);
+          }
+
+          // Update indicators
+          updateIndicators();
+        }
+
+        // Update carousel position
+        function updateCarousel(animate = true) {
+          if (!animate) {
+            carouselTrack.classList.add("reelno-transition");
+          }
+
+          // Calculate translation distance
+          const translateX = -currentIndex * itemWidth;
+
+          // Apply translation
+          carouselTrack.style.transform = `translateX(${translateX}px)`;
+
+          if (!animate) {
+            // Force reflow
+            carouselTrack.offsetHeight;
+            carouselTrack.classList.remove("reelno-transition");
+          }
+
+          // Update indicators
+          updateIndicators();
+        }
+
+        // Update indicators based on current position
+        function updateIndicators() {
+          // Calculate which real slide we're on
+          const realIndex = (currentIndex - itemsPerView) % totalItems;
+          const indicatorIndex = Math.floor(realIndex / itemsPerView);
+
+          indicators.forEach((indicator, index) => {
+            if (index === indicatorIndex) {
+              indicator.classList.add("reelactive");
+            } else {
+              indicator.classList.remove("reelactive");
+            }
+          });
+        }
+
+        // Go to a specific slide
+        function goToSlide(slideIndex) {
+          currentIndex = slideIndex * itemsPerView + itemsPerView;
+          updateCarousel();
+        }
+
+        // Handle next button click
+        function goToNext() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          currentIndex++;
+          updateCarousel();
+
+          // Check if we've reached the cloned items at the end
+          if (currentIndex >= totalItems + itemsPerView) {
+            // Wait for animation to finish
+            setTimeout(() => {
+              // Jump to the real items without animation
+              currentIndex = itemsPerView;
+              updateCarousel(false);
+              isAnimating = false;
+            }, 500);
+          } else {
+            setTimeout(() => {
+              isAnimating = false;
+            }, 500);
+          }
+        }
+
+        // Handle previous button click
+        function goToPrev() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          currentIndex--;
+          updateCarousel();
+
+          // Check if we've reached the cloned items at the beginning
+          if (currentIndex < itemsPerView) {
+            // Wait for animation to finish
+            setTimeout(() => {
+              // Jump to the real items without animation
+              currentIndex = totalItems;
+              updateCarousel(false);
+              isAnimating = false;
+            }, 500);
+          } else {
+            setTimeout(() => {
+              isAnimating = false;
+            }, 500);
+          }
+        }
+
+        // Event listeners for navigation buttons
+        prevButton.addEventListener("click", goToPrev);
+        nextButton.addEventListener("click", goToNext);
+
+        // Close modal
+        closeModal.addEventListener("click", () => {
+          modalVideo.pause();
+          modalVideo.src = "";
+          videoModal.style.display = "none";
+        });
+
+        // Close modal when clicking outside content
+        videoModal.addEventListener("click", (e) => {
+          if (e.target === videoModal) {
+            modalVideo.pause();
+            modalVideo.src = "";
+            videoModal.style.display = "none";
+          }
+        });
+
+        // Handle keyboard events
+        document.addEventListener("keydown", (e) => {
+          if (videoModal.style.display === "flex") {
+            if (e.key === "Escape") {
+              modalVideo.pause();
+              modalVideo.src = "";
+              videoModal.style.display = "none";
+            }
+          } else {
+            if (e.key === "ArrowLeft") {
+              goToPrev();
+            } else if (e.key === "ArrowRight") {
+              goToNext();
+            }
+          }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            initCarousel();
+          }, 250);
+        });
+
+        // Add touch swipe functionality
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carouselTrack.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          },
+          { passive: true }
+        );
+
+        carouselTrack.addEventListener(
+          "touchend",
+          (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+          },
+          { passive: true }
+        );
+
+        function handleSwipe() {
+          const swipeThreshold = 50;
+          if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left
+            goToNext();
+          }
+
+          if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right
+            goToPrev();
+          }
+        }
+
+        // Initialize carousel on load
+        initCarousel();
+      });
+    </script>
+  </body>
+</html>

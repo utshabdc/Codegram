@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portrait Video Carousel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    />
+    <style>
+      /* Base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Section styles */
+      .video-carousel-section {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      /* Carousel container */
+      .carousel-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      /* Navigation buttons */
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.6);
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .nav-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .prev-button {
+        left: -24px;
+      }
+
+      .next-button {
+        right: -24px;
+      }
+
+      /* Carousel track */
+      .carousel-track-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      /* Carousel items */
+      .carousel-item {
+        flex: 0 0 calc(25% - 20px); /* Show 4 items by default */
+        transition: all 0.3s ease;
+      }
+
+      /* Video cards */
+      .video-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .video-thumbnail {
+        position: relative;
+        width: 100%;
+        padding-top: 177.78%; /* 9:16 aspect ratio for portrait videos */
+        overflow: hidden;
+      }
+
+      .video-thumbnail img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .video-card:hover .video-thumbnail img {
+        transform: scale(1.05);
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 2;
+      }
+
+      .play-button:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .video-title {
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #333;
+        flex-grow: 1;
+      }
+
+      /* Video modal */
+      .video-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 500px; /* Narrower for portrait videos */
+        max-height: 90vh;
+      }
+
+      .close-button {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      .video-container {
+        width: 100%;
+        padding-top: 177.78%; /* 9:16 aspect ratio for portrait videos */
+        position: relative;
+      }
+
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        object-fit: cover;
+      }
+
+      /* Pagination indicators */
+      .pagination-indicators {
+        display: none;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .indicator.active {
+        background-color: #333;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1200px) {
+        .carousel-item {
+          flex: 0 0 calc(33.333% - 20px); /* Show 3 items */
+        }
+      }
+
+      @media (max-width: 992px) {
+        .carousel-item {
+          flex: 0 0 calc(50% - 20px); /* Show 2 items */
+        }
+      }
+
+      @media (max-width: 768px) {
+        .carousel-item {
+          flex: 0 0 calc(100% - 20px); /* Show 1 item */
+        }
+
+        .section-title {
+          font-size: 28px;
+          margin-bottom: 30px;
+        }
+
+        .pagination-indicators {
+          display: flex;
+        }
+
+        .nav-button {
+          width: 40px;
+          height: 40px;
+        }
+
+        .prev-button {
+          left: -10px;
+        }
+
+        .next-button {
+          right: -10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px 15px;
+        }
+
+        .section-title {
+          font-size: 24px;
+          margin-bottom: 25px;
+        }
+
+        .video-title {
+          font-size: 14px;
+          padding: 12px;
+        }
+
+        .nav-button {
+          width: 36px;
+          height: 36px;
+        }
+
+        .nav-button svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .modal-content {
+          width: 95%;
+        }
+      }
+
+      /* Animation for infinite scroll transition */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="video-carousel-section">
+        <h2 class="section-title">Featured Videos</h2>
+
+        <div class="carousel-container">
+          <button
+            class="nav-button prev-button"
+            id="prevButton"
+            aria-label="Previous videos"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div class="carousel-track-container">
+            <div class="carousel-track" id="carouselTrack">
+              <!-- Video Item 1 -->
+              <div class="carousel-item">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img
+                      src="https://images.unsplash.com/photo-1532767153582-b1a0e5145009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                      alt="Night ocean with moon"
+                    />
+                    <button
+                      class="play-button"
+                      data-video-src="https://45133755.fs1.hubspotusercontent-na1.net/hubfs/45133755/video1.mp4"
+                    >
+                      <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="24"
+                          cy="24"
+                          r="24"
+                          fill="white"
+                          fill-opacity="0.8"
+                        />
+                        <path
+                          d="M32 24L20 30.9282L20 17.0718L32 24Z"
+                          fill="#1A1A1A"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 class="video-title">Moonlit Ocean</h3>
+                </div>
+              </div>
+
+              <!-- Video Item 2 -->
+              <div class="carousel-item">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img
+                      src="https://images.unsplash.com/photo-1540991825428-5b54b09f7338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                      alt="Sunny bedroom with plants"
+                    />
+                    <button
+                      class="play-button"
+                      data-video-src="https://player.vimeo.com/external/368484050.sd.mp4?s=e63e98f8e4f1c215a95a9a630b7d7a9c2b7b6a42&profile_id=139&oauth2_token_id=57447761"
+                    >
+                      <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="24"
+                          cy="24"
+                          r="24"
+                          fill="white"
+                          fill-opacity="0.8"
+                        />
+                        <path
+                          d="M32 24L20 30.9282L20 17.0718L32 24Z"
+                          fill="#1A1A1A"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 class="video-title">Sunlit Bedroom</h3>
+                </div>
+              </div>
+
+              <!-- Video Item 3 -->
+              <div class="carousel-item">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img
+                      src="https://images.unsplash.com/photo-1501908734255-16579c18c25f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                      alt="Blue ice cave"
+                    />
+                    <button
+                      class="play-button"
+                      data-video-src="https://player.vimeo.com/external/308040879.sd.mp4?s=2e2e542eae7913d8d3c7d0df8e464ee0a7d2f874&profile_id=164&oauth2_token_id=57447761"
+                    >
+                      <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="24"
+                          cy="24"
+                          r="24"
+                          fill="white"
+                          fill-opacity="0.8"
+                        />
+                        <path
+                          d="M32 24L20 30.9282L20 17.0718L32 24Z"
+                          fill="#1A1A1A"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 class="video-title">Blue Ice Cave</h3>
+                </div>
+              </div>
+
+              <!-- Video Item 4 -->
+              <div class="carousel-item">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img
+                      src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                      alt="Sunset with hot air balloons"
+                    />
+                    <button
+                      class="play-button"
+                      data-video-src="https://player.vimeo.com/external/291648067.sd.mp4?s=7f9ee1f8ec1e5376027e4a6d1d05d5738b2fbb29&profile_id=164&oauth2_token_id=57447761"
+                    >
+                      <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="24"
+                          cy="24"
+                          r="24"
+                          fill="white"
+                          fill-opacity="0.8"
+                        />
+                        <path
+                          d="M32 24L20 30.9282L20 17.0718L32 24Z"
+                          fill="#1A1A1A"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 class="video-title">Sunset Highway</h3>
+                </div>
+              </div>
+
+              <!-- Video Item 5 -->
+              <div class="carousel-item">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img
+                      src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1551&q=80"
+                      alt="Blue sky"
+                    />
+                    <button
+                      class="play-button"
+                      data-video-src="https://player.vimeo.com/external/214496970.sd.mp4?s=95afd4739e647a4ece0d8bea13ec3a40a1153152&profile_id=164&oauth2_token_id=57447761"
+                    >
+                      <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="24"
+                          cy="24"
+                          r="24"
+                          fill="white"
+                          fill-opacity="0.8"
+                        />
+                        <path
+                          d="M32 24L20 30.9282L20 17.0718L32 24Z"
+                          fill="#1A1A1A"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 class="video-title">Clear Blue Sky</h3>
+                </div>
+              </div>
+
+              <!-- Video Item 6 -->
+              <div class="carousel-item">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img
+                      src="https://images.unsplash.com/photo-1682686580391-615b1f28e5ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                      alt="Mountain landscape"
+                    />
+                    <button
+                      class="play-button"
+                      data-video-src="https://player.vimeo.com/external/189545487.sd.mp4?s=8cd2af1ec08f7ce121a5a6a09c78c05237943524&profile_id=164&oauth2_token_id=57447761"
+                    >
+                      <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="24"
+                          cy="24"
+                          r="24"
+                          fill="white"
+                          fill-opacity="0.8"
+                        />
+                        <path
+                          d="M32 24L20 30.9282L20 17.0718L32 24Z"
+                          fill="#1A1A1A"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 class="video-title">Mountain View</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="nav-button next-button"
+            id="nextButton"
+            aria-label="Next videos"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 6L15 12L9 18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+          <div class="modal-content">
+            <button class="close-button" id="closeModal">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6L6 18"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 6L18 18"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="video-container">
+              <video id="modalVideo" controls></video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Indicators -->
+        <div class="pagination-indicators" id="paginationIndicators"></div>
+      </section>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Elements
+        const carouselTrack = document.getElementById("carouselTrack");
+        const prevButton = document.getElementById("prevButton");
+        const nextButton = document.getElementById("nextButton");
+        const videoModal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        const closeModal = document.getElementById("closeModal");
+        const playButtons = document.querySelectorAll(".play-button");
+        const paginationIndicators = document.getElementById(
+          "paginationIndicators"
+        );
+
+        // Variables
+        let currentIndex = 0;
+        let itemWidth;
+        let itemsPerView;
+        let totalItems = document.querySelectorAll(".carousel-item").length;
+        let totalSlides;
+        let indicators = [];
+        let isAnimating = false; // Flag to prevent multiple rapid transitions
+
+        // Initialize carousel
+        function initCarousel() {
+          // Determine items per view based on screen width
+          if (window.innerWidth >= 1200) {
+            itemsPerView = 4; // Show 4 portrait videos on large screens
+          } else if (window.innerWidth >= 992) {
+            itemsPerView = 3; // Show 3 on medium-large screens
+          } else if (window.innerWidth >= 768) {
+            itemsPerView = 2; // Show 2 on medium screens
+          } else {
+            itemsPerView = 1; // Show 1 on mobile
+          }
+
+          // Calculate total slides
+          totalSlides = Math.ceil(totalItems / itemsPerView);
+
+          // Calculate item width
+          const carouselWidth = carouselTrack.parentElement.clientWidth;
+          itemWidth = carouselWidth / itemsPerView;
+
+          // Set width for each item
+          document.querySelectorAll(".carousel-item").forEach((item) => {
+            item.style.flex = `0 0 ${itemWidth}px`;
+            item.style.maxWidth = `${itemWidth}px`;
+            item.style.margin = "0";
+          });
+
+          // Create pagination indicators
+          createPaginationIndicators();
+
+          // Update carousel position
+          updateCarousel();
+        }
+
+        // Create pagination indicators
+        function createPaginationIndicators() {
+          // Clear existing indicators
+          paginationIndicators.innerHTML = "";
+          indicators = [];
+
+          // Create new indicators
+          for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement("div");
+            indicator.classList.add("indicator");
+            if (i === currentIndex) {
+              indicator.classList.add("active");
+            }
+
+            indicator.addEventListener("click", () => {
+              currentIndex = i;
+              updateCarousel();
+            });
+
+            paginationIndicators.appendChild(indicator);
+            indicators.push(indicator);
+          }
+        }
+
+        // Update carousel position
+        function updateCarousel() {
+          // Calculate translation distance
+          const translateX = -currentIndex * (itemWidth * itemsPerView);
+
+          // Apply translation
+          carouselTrack.style.transform = `translateX(${translateX}px)`;
+
+          // Update indicators
+          indicators.forEach((indicator, index) => {
+            if (index === currentIndex % totalSlides) {
+              indicator.classList.add("active");
+            } else {
+              indicator.classList.remove("active");
+            }
+          });
+        }
+
+        // Handle infinite scroll for next button
+        function goToNext() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          currentIndex++;
+
+          // If we've gone past the last slide, prepare for looping
+          if (currentIndex >= totalSlides) {
+            // First move to the next position
+            updateCarousel();
+
+            // Then after the animation completes, instantly jump to the first slide
+            setTimeout(() => {
+              // Remove transition temporarily
+              carouselTrack.style.transition = "none";
+              currentIndex = 0;
+              updateCarousel();
+
+              // Force a reflow to make the instant jump take effect
+              carouselTrack.offsetHeight;
+
+              // Restore transition
+              carouselTrack.style.transition = "transform 0.5s ease";
+              isAnimating = false;
+            }, 500);
+          } else {
+            updateCarousel();
+            setTimeout(() => {
+              isAnimating = false;
+            }, 500);
+          }
+        }
+
+        // Handle infinite scroll for previous button
+        function goToPrev() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          if (currentIndex <= 0) {
+            // First, remove transition
+            carouselTrack.style.transition = "none";
+
+            // Jump to the end (one position before the actual end)
+            currentIndex = totalSlides - 1;
+            updateCarousel();
+
+            // Force a reflow
+            carouselTrack.offsetHeight;
+
+            // Restore transition and move to the actual end
+            carouselTrack.style.transition = "transform 0.5s ease";
+
+            setTimeout(() => {
+              isAnimating = false;
+            }, 50);
+          } else {
+            currentIndex--;
+            updateCarousel();
+            setTimeout(() => {
+              isAnimating = false;
+            }, 500);
+          }
+        }
+
+        // Event listeners for navigation buttons
+        prevButton.addEventListener("click", goToPrev);
+        nextButton.addEventListener("click", goToNext);
+
+        // Play video when play button is clicked
+        playButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const videoSrc = button.getAttribute("data-video-src");
+            modalVideo.src = videoSrc;
+            videoModal.style.display = "flex";
+
+            // Set video attributes for portrait mode
+            modalVideo.setAttribute("playsinline", "");
+            modalVideo.setAttribute("controls", "");
+
+            modalVideo.play();
+          });
+        });
+
+        // Close modal
+        closeModal.addEventListener("click", () => {
+          modalVideo.pause();
+          modalVideo.src = "";
+          videoModal.style.display = "none";
+        });
+
+        // Close modal when clicking outside content
+        videoModal.addEventListener("click", (e) => {
+          if (e.target === videoModal) {
+            modalVideo.pause();
+            modalVideo.src = "";
+            videoModal.style.display = "none";
+          }
+        });
+
+        // Handle keyboard events
+        document.addEventListener("keydown", (e) => {
+          if (videoModal.style.display === "flex") {
+            if (e.key === "Escape") {
+              modalVideo.pause();
+              modalVideo.src = "";
+              videoModal.style.display = "none";
+            }
+          } else {
+            if (e.key === "ArrowLeft") {
+              goToPrev();
+            } else if (e.key === "ArrowRight") {
+              goToNext();
+            }
+          }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            // Reset transition temporarily to prevent animation during resize
+            carouselTrack.style.transition = "none";
+            initCarousel();
+
+            // Restore transition after initialization
+            setTimeout(() => {
+              carouselTrack.style.transition = "transform 0.5s ease";
+            }, 50);
+          }, 250);
+        });
+
+        // Initialize carousel on load
+        initCarousel();
+
+        // Add touch swipe functionality
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carouselTrack.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          },
+          { passive: true }
+        );
+
+        carouselTrack.addEventListener(
+          "touchend",
+          (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+          },
+          { passive: true }
+        );
+
+        function handleSwipe() {
+          const swipeThreshold = 50;
+          if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left
+            goToNext();
+          }
+
+          if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right
+            goToPrev();
+          }
+        }
+
+        // Set initial transition
+        carouselTrack.style.transition = "transform 0.5s ease";
+
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(() => {
+            goToNext();
+          }, 5000); // Change slides every 5 seconds
+        }
+
+        function stopAutoPlay() {
+          clearInterval(autoPlayInterval);
+        }
+
+        // Start auto-play
+        // startAutoPlay();
+
+        // Pause auto-play on hover or touch
+        carouselTrack.addEventListener("mouseenter", stopAutoPlay);
+        carouselTrack.addEventListener("touchstart", stopAutoPlay);
+
+        // Resume auto-play when mouse leaves
+        carouselTrack.addEventListener("mouseleave", startAutoPlay);
+      });
+    </script>
+  </body>
+</html>
