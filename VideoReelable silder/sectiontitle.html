@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .sec-section-title-container {
+        background-color: #f0f0f0;
+        padding: 60px 20px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        text-align: center;
+        background: linear-gradient(
+          90deg,
+          rgba(102, 86, 44, 1) 0%,
+          rgba(35, 31, 19, 1) 100%
+        );
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .sec-section-title {
+        color: #fff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+      }
+
+      .sec-section-title h2 {
+        font-size: 2.3rem;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      @media (min-width: 768px) {
+        .sec-section-title p {
+          margin-top: 20px;
+          max-width: 40%;
+        }
+      }
+
+      /* Hover effects */
+      .sec-section-title-container:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(35, 31, 19, 1) 0%,
+          rgba(102, 86, 44, 1) 100%
+        );
+        transform: scale(1.05);
+      }
+
+      .sec-section-title-container:hover .sec-section-title h2 {
+        color: #ffd700; /* Change text color on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sec-section-title-container">
+      <div class="sec-section-title">
+        <h2>Section Title</h2>
+        <p>
+          This is a description of the section. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Ipsum nesciunt fugiat quas totam enim
+          praesentium deserunt dolorum veniam a alias.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Optional: If you want to trigger hover effects with JavaScript
+      const secSectionTitleContainer = document.querySelector(
+        ".sec-section-title-container"
+      );
+      secSectionTitleContainer.addEventListener("mouseenter", () => {
+        secSectionTitleContainer.style.transform = "scale(1.05)";
+      });
+
+      secSectionTitleContainer.addEventListener("mouseleave", () => {
+        secSectionTitleContainer.style.transform = "scale(1)";
+      });
+    </script>
+  </body>
+</html>
