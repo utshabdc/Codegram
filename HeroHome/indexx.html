@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Video Section</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1876b0;
+        --secondary: #1b374a;
+        --accent: #9aff00;
+        --light: #ffffff;
+        --dark: #000000;
+        --max-width: 1340px;
+        --border-radius: 16px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      .business-section {
+        padding: 80px 0;
+      }
+
+      .section-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 50px;
+      }
+
+      .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        line-height: 1.1;
+        max-width: 600px;
+        letter-spacing: -0.02em;
+      }
+
+      .accent {
+        color: var(--accent);
+      }
+
+      .section-description {
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        max-width: 450px;
+        margin-top: 10px;
+      }
+
+      .section-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .video-container {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      .video-thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        transition: transform 0.3s ease;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        background-color: var(--accent);
+        color: var(--dark);
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+
+      .play-button span {
+        margin-right: 8px;
+        font-weight: 600;
+      }
+
+      .play-button:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        display: none;
+      }
+
+      .stats-container {
+        flex: 0 0 350px;
+        background-color: var(--secondary);
+        border-radius: var(--border-radius);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+      }
+
+      .plus {
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+
+      .stat-label {
+        color: var(--light);
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .stat-divider {
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+        width: 100%;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 992px) {
+        .section-header {
+          flex-direction: column;
+        }
+
+        .section-description {
+          max-width: 600px;
+          margin-top: 20px;
+        }
+
+        .section-content {
+          flex-direction: column;
+        }
+
+        .stats-container {
+          flex: 1;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .business-section {
+          padding: 60px 0;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+        }
+
+        .play-button {
+          padding: 8px 16px;
+        }
+
+        .play-button span {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .section-header {
+          margin-bottom: 30px;
+        }
+
+        .stats-container {
+          padding: 30px 20px;
+        }
+
+        .stat-number {
+          font-size: 3rem;
+        }
+
+        .plus {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="business-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            We make your <span class="accent">*</span> business stand out
+          </h2>
+          <p class="section-description">
+            We work closely with our clients to know their objectives, target
+            audience, unique needs, and practical design solutions.
+          </p>
+        </div>
+
+        <div class="section-content">
+          <div class="video-container">
+            <div class="video-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Team brainstorming with sticky notes"
+                class="video-thumbnail"
+              />
+              <div class="play-button" id="playButton">
+                <span>Play</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </div>
+              <video id="businessVideo" controls>
+                <source
+                  src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div class="stats-container">
+            <div class="stat-item">
+              <h3 class="stat-number">15<span class="plus">+</span></h3>
+              <p class="stat-label">Years of experience</p>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <h3 class="stat-number">120k</h3>
+              <p class="stat-label">Successful projects</p>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <h3 class="stat-number">100%</h3>
+              <p class="stat-label">Client satisfaction rate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const playButton = document.getElementById("playButton");
+        const videoElement = document.getElementById("businessVideo");
+        const thumbnailElement = document.querySelector(".video-thumbnail");
+
+        // Function to play the video
+        function playVideo() {
+          // Hide the thumbnail and play button
+          thumbnailElement.style.display = "none";
+          playButton.style.display = "none";
+
+          // Show and play the video
+          videoElement.style.display = "block";
+          videoElement.play().catch((error) => {
+            console.error("Error playing the video:", error);
+            // If video fails to play, show the thumbnail and play button again
+            thumbnailElement.style.display = "block";
+            playButton.style.display = "flex";
+          });
+        }
+
+        // Add click event to the play button
+        playButton.addEventListener("click", playVideo);
+
+        // Add click event to the thumbnail as well for better UX
+        thumbnailElement.addEventListener("click", playVideo);
+
+        // When video ends, show the thumbnail and play button again
+        videoElement.addEventListener("ended", function () {
+          videoElement.style.display = "none";
+          thumbnailElement.style.display = "block";
+          playButton.style.display = "flex";
+        });
+
+        // Add pause functionality when clicking on the video
+        videoElement.addEventListener("click", function () {
+          if (videoElement.paused) {
+            videoElement.play();
+          } else {
+            videoElement.pause();
+          }
+        });
+
+        // Make the video responsive
+        window.addEventListener("resize", function () {
+          // Any additional responsive adjustments can be added here
+        });
+      });
+    </script>
+  </body>
+</html>
