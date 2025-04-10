@@ -12,19 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      :root {
-        --primary: #102739;
-        --secondary: #1f6ea4;
-        --accent: #4ade80;
-        --light: #ffffff;
-        --light-bg: #f8fcfa;
-        --text: #333333;
-        --text-light: #666666;
-        --max-width: 1340px;
-        --border-radius: 12px;
-        --transition: all 0.3s ease;
-      }
-
       * {
         margin: 0;
         padding: 0;
@@ -33,19 +20,19 @@
 
       body {
         font-family: "Inter", sans-serif;
-        background-color: var(--light-bg);
-        color: var(--text);
+        background-color: #f8fcfa;
+        color: #333333;
         line-height: 1.6;
       }
 
-      .container {
-        max-width: var(--max-width);
+      .cus-service-container {
+        max-width: 1340px;
         margin: 0 auto;
         padding: 0 20px;
         width: 100%;
       }
 
-      .why-us-section {
+      .cus-service-why-us-section {
         padding: 60px 0;
         background: linear-gradient(
           to bottom right,
@@ -54,15 +41,15 @@
         );
       }
 
-      .section-header {
+      .cus-service-section-header {
         text-align: center;
         margin-bottom: 50px;
       }
 
-      .badge {
+      .cus-service-badge {
         display: inline-block;
-        background-color: rgba(74, 222, 128, 0.2);
-        color: var(--accent);
+        background-color: #1876b0;
+        color: #fff;
         font-size: 0.875rem;
         font-weight: 600;
         padding: 6px 16px;
@@ -70,123 +57,123 @@
         margin-bottom: 16px;
       }
 
-      .section-title {
+      .cus-service-section-title {
         font-size: 2.5rem;
         font-weight: 700;
-        color: var(--primary);
+        color: #102739;
         margin-bottom: 10px;
       }
 
-      .features-grid {
+      .cus-service-features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
       }
 
-      .feature-card {
-        background-color: var(--light);
-        border-radius: var(--border-radius);
+      .cus-service-feature-card {
+        background-color: #ffffff;
+        border-radius: 12px;
         padding: 30px;
-        transition: var(--transition);
+        transition: all 0.3s ease;
         height: 100%;
         display: flex;
         flex-direction: column;
       }
 
-      .feature-card:hover {
+      .cus-service-feature-card:hover {
         box-shadow: 0 10px 30px rgba(16, 39, 57, 0.1);
         transform: translateY(-5px);
       }
 
-      .icon-wrapper {
+      .cus-service-icon-wrapper {
         width: 60px;
         height: 60px;
-        background-color: var(--accent);
+        background-color: #102739;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
-        color: var(--light);
+        color: #ffffff;
       }
 
-      .feature-title {
+      .cus-service-feature-title {
         font-size: 1.25rem;
         font-weight: 600;
-        color: var(--primary);
+        color: #102739;
         margin-bottom: 12px;
       }
 
-      .feature-description {
-        color: var(--text-light);
+      .cus-service-feature-description {
+        color: #666666;
         margin-bottom: 20px;
         flex-grow: 1;
       }
 
-      .learn-more {
+      .cus-service-learn-more {
         display: flex;
         align-items: center;
-        color: var(--secondary);
+        color: #1f6ea4;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.95rem;
         margin-top: auto;
-        transition: var(--transition);
+        transition: all 0.3s ease;
       }
 
-      .learn-more svg {
+      .cus-service-learn-more svg {
         margin-left: 8px;
-        transition: var(--transition);
+        transition: all 0.3s ease;
       }
 
-      .learn-more:hover {
-        color: var(--primary);
+      .cus-service-learn-more:hover {
+        color: #102739;
       }
 
-      .learn-more:hover svg {
+      .cus-service-learn-more:hover svg {
         transform: translateX(5px);
       }
 
       /* Responsive styles */
       @media (max-width: 992px) {
-        .section-title {
+        .cus-service-section-title {
           font-size: 2.2rem;
         }
       }
 
       @media (max-width: 768px) {
-        .why-us-section {
+        .cus-service-why-us-section {
           padding: 50px 0;
         }
 
-        .section-title {
+        .cus-service-section-title {
           font-size: 2rem;
         }
 
-        .features-grid {
+        .cus-service-features-grid {
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           gap: 20px;
         }
       }
 
       @media (max-width: 576px) {
-        .why-us-section {
+        .cus-service-why-us-section {
           padding: 40px 0;
         }
 
-        .section-title {
+        .cus-service-section-title {
           font-size: 1.8rem;
         }
 
-        .features-grid {
+        .cus-service-features-grid {
           grid-template-columns: 1fr;
         }
 
-        .feature-card {
+        .cus-service-feature-card {
           padding: 25px;
         }
 
-        .icon-wrapper {
+        .cus-service-icon-wrapper {
           width: 50px;
           height: 50px;
         }
@@ -194,17 +181,17 @@
     </style>
   </head>
   <body>
-    <section class="why-us-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge">WHY US</span>
-          <h2 class="section-title">Why Choose Us</h2>
+    <section class="cus-service-why-us-section">
+      <div class="cus-service-container">
+        <div class="cus-service-section-header">
+          <span class="cus-service-badge">WHY US</span>
+          <h2 class="cus-service-section-title">Why Choose Us</h2>
         </div>
 
-        <div class="features-grid">
+        <div class="cus-service-features-grid">
           <!-- Feature Card 1 -->
-          <div class="feature-card">
-            <div class="icon-wrapper">
+          <div class="cus-service-feature-card">
+            <div class="cus-service-icon-wrapper">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -222,12 +209,12 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Retain Top Talent</h3>
-            <p class="feature-description">
+            <h3 class="cus-service-feature-title">Retain Top Talent</h3>
+            <p class="cus-service-feature-description">
               Providing clear career paths and growth opportunities is key to
               retaining top talent.
             </p>
-            <a href="#" class="learn-more">
+            <a href="#" class="cus-service-learn-more">
               Learn More
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -247,8 +234,8 @@
           </div>
 
           <!-- Feature Card 2 -->
-          <div class="feature-card">
-            <div class="icon-wrapper">
+          <div class="cus-service-feature-card">
+            <div class="cus-service-icon-wrapper">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -264,12 +251,12 @@
                 <path d="M9 12l2 2 4-4"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Stay Compliant</h3>
-            <p class="feature-description">
+            <h3 class="cus-service-feature-title">Stay Compliant</h3>
+            <p class="cus-service-feature-description">
               Educate employees about compliance requirements through regular
               training.
             </p>
-            <a href="#" class="learn-more">
+            <a href="#" class="cus-service-learn-more">
               Learn More
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -289,8 +276,8 @@
           </div>
 
           <!-- Feature Card 3 -->
-          <div class="feature-card">
-            <div class="icon-wrapper">
+          <div class="cus-service-feature-card">
+            <div class="cus-service-icon-wrapper">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -305,12 +292,12 @@
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Improve Employee</h3>
-            <p class="feature-description">
+            <h3 class="cus-service-feature-title">Improve Employee</h3>
+            <p class="cus-service-feature-description">
               Invest in employee training and development programs to enhance
               skills and knowledge.
             </p>
-            <a href="#" class="learn-more">
+            <a href="#" class="cus-service-learn-more">
               Learn More
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -335,14 +322,16 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Get all feature cards
-        const featureCards = document.querySelectorAll(".feature-card");
+        const featureCards = document.querySelectorAll(
+          ".cus-service-feature-card"
+        );
 
         // Add hover effect with JavaScript for more control
         featureCards.forEach((card) => {
           // Mouse enter event
           card.addEventListener("mouseenter", function () {
             // Add a class for additional styling if needed
-            this.classList.add("card-hover");
+            this.classList.add("cus-service-card-hover");
 
             // Smooth animation for box shadow and transform
             this.style.transition = "box-shadow 0.3s ease, transform 0.3s ease";
@@ -353,7 +342,7 @@
           // Mouse leave event
           card.addEventListener("mouseleave", function () {
             // Remove the class
-            this.classList.remove("card-hover");
+            this.classList.remove("cus-service-card-hover");
 
             // Reset the styles
             this.style.boxShadow = "none";
@@ -362,17 +351,18 @@
         });
 
         // Add click event for learn more links
-        const learnMoreLinks = document.querySelectorAll(".learn-more");
+        const learnMoreLinks = document.querySelectorAll(
+          ".cus-service-learn-more"
+        );
 
         learnMoreLinks.forEach((link) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
 
             // Get the feature title
-            const featureTitle =
-              this.closest(".feature-card").querySelector(
-                ".feature-title"
-              ).textContent;
+            const featureTitle = this.closest(
+              ".cus-service-feature-card"
+            ).querySelector(".cus-service-feature-title").textContent;
 
             // You can add custom functionality here, like opening a modal or navigating to a new page
             console.log(`Learn more about: ${featureTitle}`);
