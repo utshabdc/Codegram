@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technology Solutions</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background-color: #e6eef5;
+        color: #042f4a;
+        line-height: 1.6;
+      }
+
+      /* Section container */
+      .anim-card-solutions-section {
+        width: 100%;
+        padding: 80px 20px;
+      }
+
+      .anim-card-container {
+        max-width: 1340px;
+        margin: 0 auto;
+        display: flex;
+        gap: 40px;
+      }
+
+      /* Left column */
+      .anim-card-left-column {
+        flex: 1;
+        padding-right: 20px;
+      }
+
+      .anim-card-section-title {
+        text-transform: uppercase;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 30px;
+        color: #042f4a;
+      }
+
+      .anim-card-section-text {
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #042f4a;
+      }
+
+      .anim-card-cta-button {
+        display: inline-block;
+        background-color: #1f6ea4;
+        color: white;
+        font-weight: 600;
+        padding: 12px 25px;
+        border-radius: 4px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .anim-card-cta-button:hover {
+        background-color: #1f6ea4;
+      }
+
+      /* Right column */
+      .anim-card-right-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .anim-card-feature-card {
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .anim-card-feature-card.anim-card-active {
+        background-color: #042f4a;
+        color: white;
+      }
+
+      .anim-card-feature-card:not(.anim-card-active) {
+        background-color: transparent;
+        color: #042f4a;
+      }
+
+      .anim-card-feature-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background-color: #1f6ea4;
+        border-radius: 2px 0 0 2px;
+      }
+
+      .anim-card-feature-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        padding-left: 15px;
+      }
+
+      .anim-card-feature-text {
+        font-size: 14px;
+        padding-left: 15px;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .anim-card-container {
+          flex-direction: column;
+        }
+
+        .anim-card-left-column,
+        .anim-card-right-column {
+          width: 100%;
+          padding-right: 0;
+        }
+
+        .anim-card-section-title {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="anim-card-solutions-section">
+      <div class="anim-card-container">
+        <div class="anim-card-left-column">
+          <h2 class="anim-card-section-title">
+            Comprehensive IT Excellence for Your Business Success
+          </h2>
+          <p class="anim-card-section-text">
+            Explore our managed IT, cybersecurity, and cloud services,
+            meticulously crafted to ensure your business remains secure,
+            efficient, and scalable in an ever-evolving digital landscape. At AE
+            Technology Solutions, we understand the unique challenges businesses
+            face, and our expert team is dedicated to delivering proactive
+            support that keeps your operations running smoothly while
+            safeguarding your data from cyber threats.
+          </p>
+          <p class="anim-card-section-text">
+            We pride ourselves on tailoring solutions to meet your specific
+            needs, empowering you to thrive in a competitive digital world.
+            Whether you’re looking to streamline IT management, enhance
+            cybersecurity, or leverage the power of the cloud, our comprehensive
+            services are designed to drive growth, improve productivity, and
+            provide peace of mind for your business.s
+          </p>
+          <button class="anim-card-cta-button">WHY AETECHNOLOGY</button>
+        </div>
+        <div class="anim-card-right-column">
+          <div class="anim-card-feature-card" id="feature1">
+            <h3 class="anim-card-feature-title">
+              Why Choose Us for Your IT Needs?
+            </h3>
+            <p class="anim-card-feature-text">
+              Over a decade of expertise empowering your business. Proactive,
+              tailored IT support for seamless growth.
+            </p>
+          </div>
+          <div class="anim-card-feature-card" id="feature2">
+            <h3 class="anim-card-feature-title">
+              Reliable IT Solutions for Your Business
+            </h3>
+            <p class="anim-card-feature-text">
+              Seamless operations, enhanced security, and scalable growth in
+              Austin, TX. Explore our services, blogs, and quick links for
+              support.
+            </p>
+          </div>
+          <div class="anim-card-feature-card" id="feature3">
+            <h3 class="anim-card-feature-title">
+              Flexible and Transparent IT Solutions
+            </h3>
+            <p class="anim-card-feature-text">
+              Custom IT packages with transparent pricing for your business. Pay
+              only for what you need, with no unnecessary costs.
+            </p>
+          </div>
+          <div class="anim-card-feature-card" id="feature4">
+            <h3 class="anim-card-feature-title">
+              Comprehensive IT Services for Every Need
+            </h3>
+            <p class="anim-card-feature-text">
+              From IT consulting to VOIP solutions, we’ve got you covered.
+              Tailored strategies to drive success and seamless technology
+              integration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all feature cards
+        const featureCards = document.querySelectorAll(
+          ".anim-card-feature-card"
+        );
+        let currentIndex = 0;
+
+        // Function to activate a feature card
+        function activateFeature(index) {
+          // Remove active class from all cards
+          featureCards.forEach((card) => {
+            card.classList.remove("anim-card-active");
+          });
+
+          // Add active class to current card
+          featureCards[index].classList.add("anim-card-active");
+
+          // Update current index
+          currentIndex = index;
+        }
+
+        // Initialize with the first card active
+        activateFeature(0);
+
+        // Set interval to change active feature every 2 seconds
+        setInterval(() => {
+          // Calculate next index (loop back to 0 if at the end)
+          const nextIndex = (currentIndex + 1) % featureCards.length;
+          activateFeature(nextIndex);
+        }, 2000);
+
+        // Add click event to the CTA button
+        const ctaButton = document.querySelector(".anim-card-cta-button");
+        ctaButton.addEventListener("click", function () {
+          // In a real implementation, this might redirect to another page
+          window.location.href =
+            "https://www.aetechnologysolutions.com/about-us-reliable-it-and-cybersecurity-services-in-austin-texas";
+        });
+      });
+    </script>
+  </body>
+</html>

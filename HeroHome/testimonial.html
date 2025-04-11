@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Testimonials</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background-color: #fff;
+        color: #000;
+        line-height: 1.6;
+      }
+
+      /* Container styles */
+      .cus-testi-testimonial-section {
+        width: 100%;
+        padding: 60px 20px;
+        overflow: hidden;
+      }
+
+      .cus-testi-container {
+        max-width: 1340px;
+        margin: 0 auto;
+      }
+
+      /* Header styles */
+      .cus-testi-testimonial-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .cus-testi-testimonial-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #000033;
+        text-align: center;
+        width: 100%;
+      }
+
+      .cus-testi-nav-buttons {
+        position: absolute;
+        right: 0;
+        display: flex;
+        gap: 10px;
+      }
+
+      .cus-testi-nav-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #000033;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        font-size: 18px;
+      }
+
+      .cus-testi-nav-button:hover {
+        background-color: #000066;
+      }
+
+      /* Testimonial slider */
+      .cus-testi-testimonial-slider {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cus-testi-testimonial-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 20px;
+      }
+
+      /* Testimonial cards */
+      .cus-testi-testimonial-card {
+        flex: 0 0 calc(50% - 10px);
+        background-color: #f5f5f7;
+        border-radius: 8px;
+        padding: 30px;
+        position: relative;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cus-testi-testimonial-content {
+        flex-grow: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cus-testi-testimonial-heading {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #000033;
+      }
+
+      .cus-testi-testimonial-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .cus-testi-testimonial-quote {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 80px;
+        color: #e0e0e5;
+        font-family: Georgia, serif;
+        z-index: 0;
+        line-height: 1;
+      }
+
+      /* Author info */
+      .cus-testi-author-info {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .cus-testi-author-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+        overflow: hidden;
+      }
+
+      .cus-testi-author-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cus-testi-author-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cus-testi-author-name {
+        font-weight: 700;
+        font-size: 16px;
+        color: #000033;
+      }
+
+      .cus-testi-author-title {
+        font-size: 14px;
+        color: #333;
+      }
+
+      /* Pagination dots */
+      .cus-testi-pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 10px;
+      }
+
+      .cus-testi-pagination-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ddd;
+        cursor: pointer;
+      }
+
+      .cus-testi-pagination-dot.cus-testi-active {
+        background-color: #000033;
+        width: 30px;
+        border-radius: 5px;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .cus-testi-testimonial-card {
+          flex: 0 0 100%;
+          margin-right: 0;
+        }
+
+        .cus-testi-testimonial-title {
+          font-size: 24px;
+        }
+
+        .cus-testi-nav-buttons {
+          position: static;
+          justify-content: center;
+          margin-top: 20px;
+        }
+
+        .cus-testi-testimonial-header {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cus-testi-testimonial-section">
+      <div class="cus-testi-container">
+        <div class="cus-testi-testimonial-header">
+          <h2 class="cus-testi-testimonial-title">
+            What Our Clients Are Saying
+          </h2>
+          <div class="cus-testi-nav-buttons">
+            <button class="cus-testi-nav-button cus-testi-prev-button">
+              ❮
+            </button>
+            <button class="cus-testi-nav-button cus-testi-next-button">
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <div class="cus-testi-testimonial-slider">
+          <div class="cus-testi-testimonial-track" id="testimonialTrack">
+            <!-- Testimonial 1 -->
+            <div class="cus-testi-testimonial-card">
+              <div class="cus-testi-testimonial-quote">”</div>
+              <div class="cus-testi-testimonial-content">
+                <h3 class="cus-testi-testimonial-heading">
+                  They placed us in a position to better service our staff.
+                </h3>
+                <p class="cus-testi-testimonial-text">
+                  When it comes to establishing an effective IT infrastructure,
+                  consulting experienced professionals is the first and most
+                  important step. It is one we are glad to have taken with VC3
+                  as they placed us in a position to better service our staff
+                  and the residents of our city.
+                </p>
+              </div>
+              <div class="cus-testi-author-info">
+                <div class="cus-testi-author-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=60&width=60"
+                    alt="Christopher Hodge"
+                  />
+                </div>
+                <div class="cus-testi-author-details">
+                  <span class="cus-testi-author-name"
+                    >Police Chief Christopher Hodge</span
+                  >
+                  <span class="cus-testi-author-title"
+                    >City of Auburn, Georgia</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="cus-testi-testimonial-card">
+              <div class="cus-testi-testimonial-quote">”</div>
+              <div class="cus-testi-testimonial-content">
+                <h3 class="cus-testi-testimonial-heading">
+                  VC3 has so far been the most enjoyable.
+                </h3>
+                <p class="cus-testi-testimonial-text">
+                  I've been working with outsourcing partners since 1998 and
+                  working with VC3 has so far been the most enjoyable and least
+                  painful experience.
+                </p>
+              </div>
+              <div class="cus-testi-author-info">
+                <div class="cus-testi-author-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=60&width=60"
+                    alt="Gabor Szentivanyi"
+                  />
+                </div>
+                <div class="cus-testi-author-details">
+                  <span class="cus-testi-author-name"
+                    >Gabor Szentivanyi, Chief Information Officer</span
+                  >
+                  <span class="cus-testi-author-title"
+                    >Kymera International</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 (Additional) -->
+            <div class="cus-testi-testimonial-card">
+              <div class="cus-testi-testimonial-quote">”</div>
+              <div class="cus-testi-testimonial-content">
+                <h3 class="cus-testi-testimonial-heading">
+                  Exceptional service and support.
+                </h3>
+                <p class="cus-testi-testimonial-text">
+                  VC3 has provided our organization with exceptional service and
+                  support. Their team is responsive, knowledgeable, and always
+                  goes the extra mile to ensure our IT infrastructure is running
+                  smoothly. I highly recommend their services.
+                </p>
+              </div>
+              <div class="cus-testi-author-info">
+                <div class="cus-testi-author-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=60&width=60"
+                    alt="Michael Johnson"
+                  />
+                </div>
+                <div class="cus-testi-author-details">
+                  <span class="cus-testi-author-name">Michael Johnson</span>
+                  <span class="cus-testi-author-title"
+                    >City Manager, Oakridge</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 4 (Additional) -->
+            <div class="cus-testi-testimonial-card">
+              <div class="cus-testi-testimonial-quote">”</div>
+              <div class="cus-testi-testimonial-content">
+                <h3 class="cus-testi-testimonial-heading">
+                  Peace of mind with cybersecurity.
+                </h3>
+                <p class="cus-testi-testimonial-text">
+                  Since partnering with VC3, we've experienced a significant
+                  improvement in our cybersecurity posture. Their proactive
+                  approach to monitoring and managing our systems has given us
+                  peace of mind and allowed us to focus on our core business.
+                </p>
+              </div>
+              <div class="cus-testi-author-info">
+                <div class="cus-testi-author-image">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=60&width=60"
+                    alt="Sarah Williams"
+                  />
+                </div>
+                <div class="cus-testi-author-details">
+                  <span class="cus-testi-author-name">Sarah Williams</span>
+                  <span class="cus-testi-author-title"
+                    >Director of Operations, TechSolutions Inc.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cus-testi-pagination" id="pagination">
+          <div
+            class="cus-testi-pagination-dot cus-testi-active"
+            data-index="0"
+          ></div>
+          <div class="cus-testi-pagination-dot" data-index="1"></div>
+          <div class="cus-testi-pagination-dot" data-index="2"></div>
+          <div class="cus-testi-pagination-dot" data-index="3"></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Elements
+        const track = document.getElementById("testimonialTrack");
+        const cards = track.querySelectorAll(".cus-testi-testimonial-card");
+        const prevButton = document.querySelector(".cus-testi-prev-button");
+        const nextButton = document.querySelector(".cus-testi-next-button");
+        const dots = document.querySelectorAll(".cus-testi-pagination-dot");
+
+        // Variables
+        let currentIndex = 0;
+        let cardWidth;
+        let cardMargin;
+        let cardsPerView;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Initialize slider
+        function initSlider() {
+          // Determine how many cards to show based on screen width
+          if (window.innerWidth <= 768) {
+            cardsPerView = 1;
+          } else {
+            cardsPerView = 2;
+          }
+
+          // Calculate card dimensions
+          cardWidth = track.clientWidth / cardsPerView;
+          cardMargin = 20; // Gap between cards
+
+          // Set width for each card
+          cards.forEach((card) => {
+            if (window.innerWidth <= 768) {
+              card.style.width = "100%";
+            } else {
+              card.style.width = `calc(${
+                100 / cardsPerView
+              }% - ${cardMargin}px)`;
+            }
+          });
+
+          // Position the track
+          updateSliderPosition();
+        }
+
+        // Update slider position
+        function updateSliderPosition() {
+          const slideAmount = currentIndex * (cardWidth + cardMargin);
+          track.style.transform = `translateX(-${slideAmount}px)`;
+
+          // Update active dot
+          dots.forEach((dot, index) => {
+            if (window.innerWidth <= 768) {
+              // On mobile, each dot represents one card
+              dot.classList.toggle("cus-testi-active", index === currentIndex);
+            } else {
+              // On desktop, each dot represents a pair of cards
+              dot.classList.toggle(
+                "cus-testi-active",
+                index === Math.floor(currentIndex / cardsPerView)
+              );
+            }
+          });
+        }
+
+        // Event listeners
+        prevButton.addEventListener("click", () => {
+          if (currentIndex > 0) {
+            if (window.innerWidth <= 768) {
+              currentIndex--;
+            } else {
+              currentIndex -= cardsPerView;
+              if (currentIndex < 0) currentIndex = 0;
+            }
+            updateSliderPosition();
+          }
+        });
+
+        nextButton.addEventListener("click", () => {
+          const maxIndex = cards.length - cardsPerView;
+          if (currentIndex < maxIndex) {
+            if (window.innerWidth <= 768) {
+              currentIndex++;
+              if (currentIndex > cards.length - 1)
+                currentIndex = cards.length - 1;
+            } else {
+              currentIndex += cardsPerView;
+              if (currentIndex > maxIndex) currentIndex = maxIndex;
+            }
+            updateSliderPosition();
+          }
+        });
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const dotIndex = parseInt(dot.dataset.index);
+            if (window.innerWidth <= 768) {
+              // On mobile, go to the exact card
+              currentIndex = dotIndex;
+            } else {
+              // On desktop, go to the pair
+              currentIndex = dotIndex * cardsPerView;
+            }
+            updateSliderPosition();
+          });
+        });
+
+        // Handle touch events for mobile swipe
+        track.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        track.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        });
+
+        function handleSwipe() {
+          const diffX = touchStartX - touchEndX;
+
+          if (diffX > 50) {
+            // Swipe left, go to next
+            nextButton.click();
+          } else if (diffX < -50) {
+            // Swipe right, go to previous
+            prevButton.click();
+          }
+        }
+
+        // Initialize slider on load and resize
+        window.addEventListener("resize", initSlider);
+        initSlider();
+      });
+    </script>
+  </body>
+</html>
